@@ -1,3 +1,0 @@
-[cors-misconfig:arbitrary-origin] [http] [info] https://s3.baremetal-m24.gcp.gnrg-osdu.projects.epam.com [cors_origin="https://s3abaremetal-m24agcpagnrg-osduaprojectsaepamacom"]
-[cors-misconfig:arbitrary-origin] [http] [info] https://s3.core-dev.gcp.gnrg-osdu.projects.epam.com [cors_origin="https://5ntwqepam.com"]
-[cors-misconfig:arbitrary-origin] [http] [info] https://s3.ref.gcp.gnrg-osdu.projects.epam.com [cors_origin="https://yftdn.epam.com"]

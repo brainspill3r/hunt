@@ -1,7 +1,0 @@
-internal-fargate.0001.il-central-1.online.mettle.aws.a2z.com
-internal-fargate.0001.eu-central-2.online.mettle.aws.a2z.com
-telemetry.cell-0.ap-northeast-1.prod.tangerinebox.console.aws.a2z.com
-us-east-1.prod.pr.analytics.console.aws.a2z.com
-eu-west-2.prod.pr.analytics.console.aws.a2z.com
-ap-northeast-1.prod.pr.analytics.console.aws.a2z.com
-us-east-2.prod.pr.analytics.console.aws.a2z.com

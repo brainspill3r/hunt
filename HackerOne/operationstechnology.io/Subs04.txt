@@ -1,5 +1,0 @@
-ebot7.guea.operationstechnology.io
-operationstechnology.io
-www.ebot7.guea.operationstechnology.io
-prometheus.esa.operationstechnology.io
-aws-api.operationstechnology.io

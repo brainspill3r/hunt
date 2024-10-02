@@ -1,8 +1,0 @@
-cerberus.airbnb-aws.com
-origin-one.airbnb-aws.com
-styx.airbnb-aws.com
-origin-events.airbnb-aws.com
-charon-themis.airbnb-aws.com
-airbnb-aws.com
-airbnb-aws.com
-airbnb-aws.com

@@ -1,6 +1,0 @@
-blackbox.securityservices.io
-ctf.securityservices.io
-null
-rancherdev.securityservices.io
-rancher.securityservices.io
-securityservices.io

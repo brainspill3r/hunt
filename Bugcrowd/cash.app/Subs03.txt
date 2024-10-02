@@ -1,4 +1,0 @@
-cash.app
-www.cash.app
-convergence.internal.cash.app
-api.cash.app

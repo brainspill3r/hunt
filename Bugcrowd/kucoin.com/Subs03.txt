@@ -1,7 +1,0 @@
-kucoin.com
-assets-currency.kucoin.com
-www.kucoin.com
-ws-api-spot.kucoin.com
-www.jkucoin.com
-staking-zil.kucoin.com
-channel-callback.kucoin.com

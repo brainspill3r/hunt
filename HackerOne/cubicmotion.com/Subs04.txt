@@ -1,9 +1,0 @@
-calendar.cubicmotion.com
-vpn.cubicmotion.com
-staging.cubicmotion.com
-legacy.cubicmotion.com
-www.cubicmotion.com
-docs.cubicmotion.com
-cubicmotion.com
-www.vpn.cubicmotion.com
-downloads.cubicmotion.com

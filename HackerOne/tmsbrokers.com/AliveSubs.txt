@@ -1,8 +1,0 @@
-http://sni.cloudflaressl.com
-https://platform.tmsbrokers.com
-https://sm.tmsbrokers.com
-https://client.tmsbrokers.com
-https://oanda.tmsbrokers.com
-https://lp.tmsbrokers.com
-https://tmsbrokers.com
-https://www.tmsbrokers.com

@@ -1,6 +1,0 @@
-https://example.com
-http://m.testexample.com
-https://subjectname@example.com
-https://user@example.com
-https://www.example.com
-https://www.example.org

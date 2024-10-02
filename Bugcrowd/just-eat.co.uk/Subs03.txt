@@ -1,9 +1,0 @@
-giftcards.just-eat.co.uk
-kpaonlineorid.addondomain.just-eat.co.uk
-offline.just-eat.co.uk
-www.just-eat.co.uk
-smartgateway.just-eat.co.uk
-uk-deliveryserviceexternalapi.just-eat.co.uk
-just-eat.co.uk
-crowdstrike.live-reporting.just-eat.co.uk
-auth.just-eat.co.uk

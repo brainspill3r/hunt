@@ -1,2 +1,0 @@
-beta.arlo.com
-myapi.beta.arlo.com

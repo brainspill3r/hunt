@@ -1,3 +1,0 @@
-allegro.sk.allegrosandbox.pl
-edge.allegro.sk.allegrosandbox.pl
-t.allegro.sk.allegrosandbox.pl

@@ -1,4 +1,0 @@
-beta.arlo.com
-myapi.beta.arlo.com
-ssl972958.cloudflaressl.com
-ssl972959.cloudflaressl.com

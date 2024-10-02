@@ -1,8 +1,0 @@
-https://audica-prod-api.hmxwebservices.com
-https://audica-api.hmxwebservices.com
-https://dropmix-prod.hmxwebservices.com
-https://dropmix-dev.hmxwebservices.com
-https://hype-dev.hmxwebservices.com
-https://static.hmxwebservices.com
-https://dc-prod.hmxwebservices.com
-https://videos.hmxwebservices.com

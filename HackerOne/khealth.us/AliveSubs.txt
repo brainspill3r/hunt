@@ -1,9 +1,0 @@
-https://api-integration.khealth.us
-http://ssl362649.cloudflaressl.com
-http://ssl383818.cloudflaressl.com
-http://ssl363584.cloudflaressl.com
-http://sni253361.cloudflaressl.com
-http://ssl362648.cloudflaressl.com
-http://ssl363585.cloudflaressl.com
-https://kaccount.k-staging.khealth.xyz
-https://production.khealth.us

@@ -1,8 +1,0 @@
-https://gamma.console.tsologic.com
-https://graphql.console.tsologic.com
-https://gamma.graphql.console.tsologic.com
-https://beta.graphql.console.tsologic.com
-https://beta.console.tsologic.com
-https://tsologic.com
-https://www.tsologic.com
-https://console.tsologic.com

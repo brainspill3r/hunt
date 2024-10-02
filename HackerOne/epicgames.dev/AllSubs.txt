@@ -1,8 +1,0 @@
-connect.epicgames.dev
-epicgames.dev
-api.epicgames.dev
-www.epicgames.dev
-weighted-epic-connect-manager-prod.epicgames.dev
-250aapi.epicgames.dev
-weighted-zh-connect.epicgames.dev
-befa.live.use1a.on.epicgames.com

@@ -1,4 +1,0 @@
-api.database.dev
-api-staging.database.dev
-database.dev
-www.database.dev

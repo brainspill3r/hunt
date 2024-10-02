@@ -1,5 +1,0 @@
-au.intercomassets.com
-au.intercom.io
-blog.intercomassets.com
-blog-staging.intercomassets.com
-intercomassets.com

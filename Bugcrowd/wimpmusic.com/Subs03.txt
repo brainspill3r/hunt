@@ -1,5 +1,0 @@
-resources.wimpmusic.com
-api.wimpmusic.com
-wimpmusic.com
-wimpmusic.com
-wimpmusic.com

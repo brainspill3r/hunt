@@ -1,9 +1,0 @@
-https://lifescience.opensource.epam.com
-https://indigo-eln.test.lifescience.opensource.epam.com
-https://tst.mri-viewer.opensource.epam.com
-https://mri-viewer.opensource.epam.com
-https://dev.mri-viewer.opensource.epam.com
-https://opensource.epam.com
-https://polymer.test.lifescience.opensource.epam.com
-https://miew.app
-https://miew.opensource.epam.com

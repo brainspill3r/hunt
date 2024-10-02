@@ -1,4 +1,0 @@
-https://www.database.dev
-https://api-staging.database.dev
-https://api.database.dev
-https://database.dev

@@ -1,2 +1,0 @@
-http://sni.cloudflaressl.com
-https://app.meliopayments.com

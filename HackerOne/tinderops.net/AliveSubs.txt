@@ -1,2 +1,0 @@
-http://ignis.tinderops.net
-https://repo.staging.k8s.tinderops.net

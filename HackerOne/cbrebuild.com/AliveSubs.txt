@@ -1,7 +1,0 @@
-https://protofit-production-east.herokuapp.com
-https://www.cbre.com
-https://workplace.cbre.com
-https://industrial-production-east.herokuapp.com
-https://cbrebuild-datavis-prod-east.herokuapp.com
-https://siteiq.cbre.com
-https://plans.cbre.com

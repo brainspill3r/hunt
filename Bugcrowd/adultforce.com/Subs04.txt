@@ -1,7 +1,0 @@
-www.adultforce.com
-atlas.adultforce.com
-cdn.adultforce.com
-publishers.adultforce.com
-cpm.adultforce.com
-adultforce.com
-auth.adultforce.com

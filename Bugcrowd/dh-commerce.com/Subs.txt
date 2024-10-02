@@ -1,8 +1,0 @@
-staging.dh-commerce.com
-dh-commerce.com
-dev.dh-commerce.com
-perftest.dh-commerce.com
-dh-commerce.com
-dev.dh-commerce.com
-perftest.dh-commerce.com
-staging.dh-commerce.com

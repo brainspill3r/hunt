@@ -1,4 +1,0 @@
-allegro.cz.allegrosandbox.pl
-business.allegro.cz.allegrosandbox.pl
-edge.business.allegro.cz.allegrosandbox.pl
-upload.business.allegro.cz.allegrosandbox.pl

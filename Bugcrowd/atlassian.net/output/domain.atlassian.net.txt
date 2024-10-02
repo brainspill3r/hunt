@@ -1,7 +1,0 @@
-323232323323232d.atlassian.net
-atlassian.net
-bugbountytest-rjw5.atlassian.net
-cloudflare-test.atlassian.net
-cloudfront-test.atlassian.net
-c.ssl.fastly.net
-teridion-test.atlassian.net

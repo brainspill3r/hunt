@@ -1,4 +1,0 @@
-ras.jp.loccitane.com
-test-support.jp.loccitane.com
-support.jp.loccitane.com
-www.ras.jp.loccitane.com

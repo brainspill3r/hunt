@@ -1,3 +1,0 @@
-emakina.group
-godot.emakina.group
-www.emakina.group

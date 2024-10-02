@@ -1,9 +1,0 @@
-ui.msgsvc.io
-dev.msgsvc.io
-live.msgsvc.io
-test.ui.msgsvc.io
-live.ui.msgsvc.io
-ui.preenn-1.dev.msgsvc.io
-dev.ui.msgsvc.io
-test.msgsvc.io
-ui.dev.msgsvc.io

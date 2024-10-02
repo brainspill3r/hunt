@@ -1,6 +1,0 @@
-apps.skygamingcontent.com
-apps-staging.skygamingcontent.com
-skygamingcontent.com
-www.apps.skygamingcontent.com
-www.skygamingcontent.com
-cdn1.skygamingcontent.com

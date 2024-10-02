@@ -1,5 +1,0 @@
-odesli.com
-staging.odesli.com
-odesli.com
-odesli.com
-*.staging.odesli.com

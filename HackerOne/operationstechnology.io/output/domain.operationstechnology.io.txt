@@ -1,7 +1,0 @@
-aws-api.operationstechnology.io
-ebot7.guea.operationstechnology.io
-null
-operationstechnology.io
-prometheus.esa.operationstechnology.io
-sni.cloudflaressl.com
-www.ebot7.guea.operationstechnology.io

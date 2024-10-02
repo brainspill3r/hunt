@@ -1,6 +1,0 @@
-wotif.com
-www.wotif.com
-image.eg.wotif.com
-auth-test.wotif.com
-admin.wotif.com
-email.chat.wotif.com

@@ -1,3 +1,0 @@
-https://ipa-admin-ui.timeseries.nl
-https://os-internal-dev.valuga.nl
-https://tes.valuga.nl

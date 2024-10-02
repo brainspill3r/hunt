@@ -1,3 +1,0 @@
-oxalide-metrics.tools.thefork.tech
-priv.tools.thefork.tech
-tools.thefork.tech

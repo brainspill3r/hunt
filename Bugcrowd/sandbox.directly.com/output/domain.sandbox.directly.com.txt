@@ -1,9 +1,0 @@
-directly.com
-sandbox01.sandbox.directly.com
-sandbox02.sandbox.directly.com
-sandbox03.sandbox.directly.com
-sandbox0.sandbox.directly.com
-sandbox1.sandbox.directly.com
-sandbox2.sandbox.directly.com
-sandbox.directly.com
-sandbox-worker01.sandbox.directly.com

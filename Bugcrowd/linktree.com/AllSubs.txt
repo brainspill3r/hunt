@@ -1,6 +1,0 @@
-production.linktree.com
-qa.linktree.com
-linktree.com
-www.qa.linktree.com
-wwww.linktree.com
-www.linktree.com

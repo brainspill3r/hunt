@@ -1,7 +1,0 @@
-mail.ek.com.au
-webdisk.ek.com.au
-webmail.ek.com.au
-cpcalendars.ek.com.au
-cpanel.ek.com.au
-www.ek.com.au
-cpcontacts.ek.com.au

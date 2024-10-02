@@ -1,6 +1,0 @@
-opensea.io
-docs.opensea.io
-pro.opensea.io
-links.opensea.io
-www.opensea.io
-testnets.opensea.io
