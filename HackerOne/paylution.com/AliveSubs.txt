@@ -1,0 +1,7 @@
+https://links.paylution.com
+https://qamaster-docs.paylution.com
+https://qamaster-portal.paylution.com
+https://qarelease-docs.paylution.com
+https://qarelease-portal.paylution.com
+https://qamaster.dev.paylution.com
+http://qatrunk-portal.paylution.com

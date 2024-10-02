@@ -1,0 +1,13 @@
+en.tmsbrokers.com
+sm.tmsbrokers.com
+tmsbrokers.com
+www.tmsbrokers.com
+ml.tmsbrokers.com
+platform.tmsbrokers.com
+apinonstop.tmsbrokers.com
+oanda.tmsbrokers.com
+client.tmsbrokers.com
+beta.tmsbrokers.com
+proxy.tmsbrokers.com
+nonstop.tmsbrokers.com
+lp.tmsbrokers.com

@@ -1,0 +1,12 @@
+https://buenosaires.foundrygov.com
+https://brick-container-registry.foundrygov.com
+https://projektpiecza.foundrygov.com
+https://brick.foundrygov.com
+https://stipruskartu.foundrygov.com
+https://pomocdlaukrainy.foundrygov.com
+https://brick-mgmt.foundrygov.com
+https://mallow-mgmt.foundrygov.com
+https://mallow.foundrygov.com
+https://kanagawa.foundrygov.com
+https://kanagawa-lg.foundrygov.com
+https://mallow-container-registry.foundrygov.com

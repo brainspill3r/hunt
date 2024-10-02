@@ -1,0 +1,11 @@
+smetrics.costco.com
+iga.costco.com
+data.digital.costco.com
+mycostcoaccount.costco.com
+servicecenter.membership.adt.np.costco.com
+costco.com
+www.costco.com
+search-costco-web-usbc.adt004.npd.digital.ct-costco.com
+claimit-qat.np.costco.com
+login.costco.com
+loginnp.costco.com

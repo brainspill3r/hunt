@@ -1,0 +1,11 @@
+api.bokundemo.com
+appstore.bokundemo.com
+changelog.bokundemo.com
+bookings.bokundemo.com
+extranet.bokundemo.com
+bookingarea.bokundemo.com
+website.bokundemo.com
+payments.bokundemo.com
+widgets.bokundemo.com
+wid.bokundemo.com
+beanstalk-test-app.bokundemo.com

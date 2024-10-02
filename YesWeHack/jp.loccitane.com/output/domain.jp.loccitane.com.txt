@@ -1,0 +1,6 @@
+jp.loccitane.com
+loccitane.com
+ras.jp.loccitane.com
+support.jp.loccitane.com
+test-support.jp.loccitane.com
+www.ras.jp.loccitane.com

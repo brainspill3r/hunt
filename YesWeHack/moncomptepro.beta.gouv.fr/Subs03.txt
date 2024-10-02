@@ -1,0 +1,6 @@
+moncomptepro.beta.gouv.fr
+email.moncomptepro.beta.gouv.fr
+r.email.moncomptepro.beta.gouv.fr
+app.moncomptepro.beta.gouv.fr
+hyyypertool-preprod.moncomptepro.beta.gouv.fr
+hyyypertool.moncomptepro.beta.gouv.fr

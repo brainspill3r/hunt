@@ -1,0 +1,7 @@
+m.staging.sportinglife.com
+gallery.sportinglife.com
+www.sportinglife.com
+m.sportinglife.com
+www.staging.sportinglife.com
+pick7.sportinglife.com
+example.sportinglife.com

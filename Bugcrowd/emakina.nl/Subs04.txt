@@ -1,0 +1,17 @@
+blog.emakina.nl
+kipa.demo.emakina.nl
+www.bamboo.emakina.nl
+rituals-demo.emakina.nl
+ad-preview.emakina.nl
+www.vpn.emakina.nl
+jobs.emakina.nl
+confluence.emakina.nl
+jira.emakina.nl
+vpn.emakina.nl
+emakina.nl
+www.emakina.nl
+bamboo.emakina.nl
+stash.emakina.nl
+services.emakina.nl
+monitor.emakina.nl
+alt.emakina.nl

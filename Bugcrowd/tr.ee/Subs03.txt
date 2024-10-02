@@ -1,0 +1,15 @@
+linktr.ee
+tr.ee
+www.linktr.ee
+beta.tr.ee
+beta.qa.tr.ee
+capi.tr.ee
+redirect.qa.tr.ee
+qa.tr.ee
+redirect.tr.ee
+redirect.production.tr.ee
+redirect.qa.qa.tr.ee
+tr.ee
+tr.ee
+tr.ee
+www.tr.ee

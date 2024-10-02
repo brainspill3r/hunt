@@ -1,0 +1,17 @@
+# Nmap 7.94SVN scan initiated Fri Sep 20 02:17:19 2024 as: nmap -sV --script=banner -iL /home/brainspiller/Documents/hunt/Bugcrowd/epam.com/targets.txt -oN nmapscriptbanner.txt
+Nmap scan report for epam.com (172.64.147.85)
+Host is up (0.0023s latency).
+Other addresses for epam.com (not scanned): 104.18.40.171 2606:4700:4400::ac40:9355 2606:4700:4400::6812:28ab
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE  VERSION
+80/tcp   open  http     Cloudflare http proxy
+|_http-server-header: cloudflare
+443/tcp  open  ssl/http Cloudflare http proxy
+|_http-server-header: cloudflare
+8080/tcp open  http     Cloudflare http proxy
+|_http-server-header: cloudflare
+8443/tcp open  ssl/http Cloudflare http proxy
+|_http-server-header: cloudflare
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Sep 20 02:17:56 2024 -- 1 IP address (1 host up) scanned in 37.48 seconds

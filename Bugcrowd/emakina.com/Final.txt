@@ -1,0 +1,16 @@
+http://autodiscover.did.emakina.com
+https://cdn.emakina.com
+http://autodiscover.tr.emakina.com
+https://cee.emakina.com
+https://experience.emakina.com
+https://brand.emakina.com
+https://blog.emakina.com
+https://caseday.emakina.com
+https://ims.emakina.com
+https://olivia.emakina.com
+https://marketplaces.emakina.com
+https://www.experience.emakina.com
+https://www.brand.emakina.com
+https://www.caseday.emakina.com
+https://www.emakina.com
+https://www.thegoodmove.emakina.com

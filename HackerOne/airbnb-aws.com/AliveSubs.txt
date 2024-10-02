@@ -1,0 +1,2 @@
+https://hypnos.airbnb-aws.com
+https://traffic-monitor.airbnb-aws.com

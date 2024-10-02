@@ -1,0 +1,9 @@
+dev.msgsvc.io
+dev.ui.msgsvc.io
+live.msgsvc.io
+live.ui.msgsvc.io
+msgsvc.io
+test.msgsvc.io
+test.ui.msgsvc.io
+ui.dev.msgsvc.io
+ui.msgsvc.io

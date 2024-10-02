@@ -1,0 +1,12 @@
+api.ycloud.com
+blog.ycloud.com
+docs.ycloud.com
+helpcenter.ycloud.com
+helpdocs-test.ycloud.com
+helpdocs.ycloud.com
+test-door.ycloud.com
+tls.automattic.com
+www.blog.ycloud.com
+www-dev.ycloud.com
+www.ycloud.com
+ycloud.com

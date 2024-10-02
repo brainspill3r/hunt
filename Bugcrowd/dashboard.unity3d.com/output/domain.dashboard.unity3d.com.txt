@@ -1,0 +1,11 @@
+auth.dashboard.unity3d.com
+auth.staging.dashboard.unity3d.com
+dashboard.unity3d.com
+distribute-dev.dashboard.unity3d.com
+distribute-dev-gw.dashboard.unity3d.com
+edu.china.unity3d.com
+legacy-api.dashboard.unity3d.com
+legacy-api.staging.dashboard.unity3d.com
+metrics.dashboard.unity3d.com
+metrics.staging.dashboard.unity3d.com
+staging.dashboard.unity3d.com

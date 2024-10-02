@@ -1,0 +1,10 @@
+dev.msgsvc.io
+test.msgsvc.io
+live.msgsvc.io
+msgsvc.io
+ui.msgsvc.io
+test.ui.msgsvc.io
+dev.ui.msgsvc.io
+live.ui.msgsvc.io
+ui.dev.msgsvc.io
+ui.preenn-1.dev.msgsvc.io

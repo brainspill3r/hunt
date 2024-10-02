@@ -1,0 +1,12 @@
+r.mturk.com
+mturk.com
+www.requestor.mturk.com
+www.mturk.com
+workersandbox.mturk.com
+blog.mturk.com
+sandbox.mturk.com
+requester.mturk.com
+requestersandbox.mturk.com
+worker.mturk.com
+requestor.mturk.com
+www.blog.mturk.com

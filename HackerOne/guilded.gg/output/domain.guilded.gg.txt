@@ -1,0 +1,10 @@
+api-preprod.guilded.gg
+api-staging.guilded.gg
+dl.guilded.gg
+guilded.gg
+sni.cloudflaressl.com
+sourcemaps.local.guilded.gg
+support.guilded.gg
+video-edge-1.guilded.gg
+www.guilded.gg
+www.video-edge-1.guilded.gg

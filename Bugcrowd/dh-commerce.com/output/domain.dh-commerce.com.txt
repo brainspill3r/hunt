@@ -1,0 +1,4 @@
+dev.dh-commerce.com
+dh-commerce.com
+perftest.dh-commerce.com
+staging.dh-commerce.com

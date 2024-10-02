@@ -1,0 +1,8 @@
+aip.palantir.com
+blog.palantir.com
+palantir.com
+www.palantir.com
+investors.palantir.com
+learn.palantir.com
+wafmessage.palantir.com
+static-transfer.palantir.com

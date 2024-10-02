@@ -1,0 +1,10 @@
+dev.hubspotemail.net
+f.hubspotemail.net
+hubspotemail.net
+p1.acceptancetesting.hubspotemail.net
+s.hubspotemail.net
+sni.cloudflaressl.com
+ssl871620.cloudflaressl.com
+ssl871621.cloudflaressl.com
+ssl871622.cloudflaressl.com
+t.hubspotemail.net

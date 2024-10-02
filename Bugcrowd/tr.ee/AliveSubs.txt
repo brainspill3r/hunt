@@ -1,0 +1,9 @@
+https://www.linktr.ee
+https://beta.tr.ee
+https://qa.tr.ee
+https://beta.qa.tr.ee
+https://linktr.ee
+https://redirect.tr.ee
+https://redirect.qa.tr.ee
+https://capi.tr.ee
+https://tr.ee

@@ -1,0 +1,14 @@
+www-dev.ycloud.com
+docs.ycloud.com
+cdn-0.ycloud.com
+www.blog.ycloud.com
+test-door.ycloud.com
+helpdocs.ycloud.com
+www.ycloud.com
+help.ycloud.com
+sdk.ycloud.com
+api.ycloud.com
+ycloud.com
+helpcenter.ycloud.com
+helpdocs-test.ycloud.com
+blog.ycloud.com

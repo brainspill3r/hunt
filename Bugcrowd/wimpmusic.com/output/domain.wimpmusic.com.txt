@@ -1,0 +1,4 @@
+resources.tidal.com
+resources.wimpmusic.com
+tidal.com
+wimpmusic.com

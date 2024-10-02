@@ -1,0 +1,13 @@
+staging-global-webapp-proxy.nu.com.mx
+nu.com.mx
+staging-s0-green-banner-nlb.nu.com.mx
+infra.celcom.blog.nu.com.mx
+stagecelcom.blog.nu.com.mx
+celcom.blog.nu.com.mx
+www.nu.com.mx
+url39.nu.com.mx
+comunidad.nu.com.mx
+prod-s1-fog-wall.nu.com.mx
+email.marketing.nu.com.mx
+blog.nu.com.mx
+prod-s1-tmx-client.nu.com.mx

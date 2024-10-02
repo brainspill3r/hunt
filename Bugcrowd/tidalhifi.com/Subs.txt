@@ -1,0 +1,12 @@
+api.tidalhifi.com
+listen.tidalhifi.com
+xadmin.tidalhifi.com
+images.tidalhifi.com
+my.tidalhifi.com
+rtmp.stream.tidalhifi.com
+kibana.tidalhifi.com
+www.tidalhifi.com
+go.tidalhifi.com
+tracking.tidalhifi.com
+test.tidalhifi.com
+tidalhifi.com

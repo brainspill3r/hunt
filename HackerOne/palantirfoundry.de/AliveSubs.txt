@@ -1,0 +1,15 @@
+https://farmak.palantirfoundry.de
+https://blumen.palantirfoundry.de
+https://gold.palantirfoundry.de
+https://alexanderthamm-sandbox.palantirfoundry.de
+https://hmsanalytical-sandbox.palantirfoundry.de
+https://pool-container-registry.palantirfoundry.de
+https://pool-mgmt.palantirfoundry.de
+https://soleil-compute.palantirfoundry.de
+https://pool.palantirfoundry.de
+https://soleil-container-registry.palantirfoundry.de
+https://soleil-containers.palantirfoundry.de
+https://soleil-mgmt.palantirfoundry.de
+https://soleil.palantirfoundry.de
+https://baesystemselectronicsystems-sandbox.palantirfoundry.de
+https://linevision-sandbox.palantirfoundry.de

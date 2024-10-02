@@ -1,0 +1,4 @@
+fr.loccitane.com
+lp.fr.loccitane.com
+backoffice.fr.loccitane.com
+edxy.fr.loccitane.com

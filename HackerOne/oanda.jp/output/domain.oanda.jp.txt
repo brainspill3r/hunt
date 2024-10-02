@@ -1,0 +1,15 @@
+fxtrade.oanda.jp
+fxtradepro.oanda.jp
+mactrack.oanda.jp
+mygaika.oanda.jp
+oanda.jp
+p5-mt5ac-01-sp.oanda.jp
+practice.oanda.jp
+sni.cloudflaressl.com
+ssl422042.cloudflaressl.com
+ssl422043.cloudflaressl.com
+staging.oanda.jp
+uat.oanda.jp
+www.fxtradepro.oanda.jp
+www.mygaika.oanda.jp
+www.oanda.jp

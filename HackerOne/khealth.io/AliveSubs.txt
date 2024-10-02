@@ -1,0 +1,15 @@
+https://api-1.khealth.io
+https://identity-1.khealth.io
+https://identity.khealth.io
+https://images.khealth.io
+https://hero-force.khealth.io
+http://ssl383587.cloudflaressl.com
+http://ssl383588.cloudflaressl.com
+https://middle-force.khealth.io
+https://identity-web-2.khealth.io
+http://ssl383586.cloudflaressl.com
+https://cdn.khealth.io
+https://api.khealth.io
+https://identity-2.khealth.io
+https://gdpr.khealth.io
+https://api-2.khealth.io

@@ -1,0 +1,11 @@
+https://lambda-redirect17.mars-inc.com
+https://live.whiskas.com
+https://lambda-redirect27.mars-inc.com
+https://dev.whiskas.com
+http://sni.cloudflaressl.com
+https://qa.whiskas.com
+https://test.whiskas.com
+https://www.whiskas.com
+https://www.whiskas.com.ar
+https://whiskas.com
+https://whiskas.com.ar

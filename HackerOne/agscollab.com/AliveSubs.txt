@@ -1,0 +1,13 @@
+https://gamma.devops-web.agsoc-dev.agscollab.com
+http://mars.agscollab.com
+https://loc.agscollab.com
+https://confluence.agsoc-dev.agscollab.com
+https://jira.agsoc-dev.agscollab.com
+https://jenkins-pipeline.agscollab.com
+https://jira.agscollab.com
+https://memoq.agscollab.com
+https://testrail.agsoc-dev.agscollab.com
+https://wiki.agsoc-dev.agscollab.com
+https://wiki.agscollab.com
+https://reviewboard.agscollab.com
+http://nw-preprod.agsoc-dev.agscollab.com

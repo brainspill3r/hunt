@@ -1,0 +1,5 @@
+api.epicgames.dev
+befa.live.use1a.on.epicgames.com
+connect.epicgames.dev
+epicgames.dev
+www.epicgames.dev

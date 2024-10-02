@@ -1,0 +1,15 @@
+https://acquire.staging.dashboard.unity3d.com
+https://auth.staging.dashboard.unity3d.com
+https://operate.dashboard.unity3d.com
+https://dashboard.unity3d.com
+https://metrics.dashboard.unity3d.com
+https://acquire.dashboard.unity3d.com
+https://partner.dashboard.unity3d.com
+https://metrics.staging.dashboard.unity3d.com
+https://auth.dashboard.unity3d.com
+https://operate.staging.dashboard.unity3d.com
+https://staging.dashboard.unity3d.com
+https://distribute-staging-gw.dashboard.unity3d.com
+https://distribute-gw.dashboard.unity3d.com
+https://distribute-staging.dashboard.unity3d.com
+https://distribute.dashboard.unity3d.com

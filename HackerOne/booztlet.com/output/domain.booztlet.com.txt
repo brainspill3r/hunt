@@ -1,0 +1,15 @@
+akamai-san18.exacttarget.com
+Boozt Fashion AB
+booztlet.com
+click.booztlet.com
+click.email.booztlet.com
+fpt.booztlet.com
+image.email.booztlet.com
+sni.cloudflaressl.com
+ssl424093.cloudflaressl.com
+ssl424094.cloudflaressl.com
+ssl424095.cloudflaressl.com
+t.booztlet.com
+t-dev.booztlet.com
+view.email.booztlet.com
+www.booztlet.com

@@ -1,0 +1,5 @@
+odesli.com
+staging.odesli.com
+*.staging.odesli.com
+odesli.co
+staging.odesli.co

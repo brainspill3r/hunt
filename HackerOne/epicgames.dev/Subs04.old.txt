@@ -1,0 +1,7 @@
+api.epicgames.dev
+250aapi.epicgames.dev
+connect.epicgames.dev
+www.epicgames.dev
+epicgames.dev
+weighted-zh-connect.epicgames.dev
+weighted-epic-connect-manager-prod.epicgames.dev

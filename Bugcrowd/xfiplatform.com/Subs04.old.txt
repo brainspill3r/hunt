@@ -1,0 +1,17 @@
+gw-act.xfiplatform.com
+gw-act-config-stage.xfiplatform.com
+gw-act-int.xfiplatform.com
+transfersfile-integration.xfiplatform.com
+activation-integration.xfiplatform.com
+gw-act-events-processor.xfiplatform.com
+gw-act-events-processor-stage.xfiplatform.com
+activation-staging.xfiplatform.com
+transfersfile.xfiplatform.com
+gw-act-config.xfiplatform.com
+gateway-activation-test.xfiplatform.com
+activation.xfiplatform.com
+gw-act-stage.xfiplatform.com
+gw-act-config-int.xfiplatform.com
+test-ec2.xfiplatform.com
+transfersfile-staging.xfiplatform.com
+gw-act-events-processor-int.xfiplatform.com

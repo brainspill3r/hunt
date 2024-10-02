@@ -1,0 +1,14 @@
+http://sni.cloudflaressl.com
+https://agile.8x8staging.com
+https://www-rzc55b.8x8staging.com
+https://superx.8x8staging.com
+https://dmw.8x8staging.com
+https://sso.8x8staging.com
+https://admin-shell.8x8staging.com
+https://payui.8x8staging.com
+https://work.8x8staging.com
+https://admin-vnext.8x8staging.com
+https://express.8x8staging.com
+https://admin.8x8staging.com
+https://cloud8-test.8x8staging.com
+https://apps.8x8staging.com

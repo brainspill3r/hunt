@@ -1,0 +1,24 @@
+api.flipkey.com
+autodiscover.flipkey.com
+data.flipkey.com
+exchange.tripadvisor.com
+feeds.flipkey.com
+flipkey.com
+FLIPKEY, INC.
+helpcenter.flipkey.com
+help.flipkey.com
+images.flipkey.com
+messages.flipkey.com
+origin-www.flipkey.com
+propertymanagers.flipkey.com
+resources.holidaylettings.co.uk
+resources.secure2.flipkey.com
+secure2.flipkey.com
+secure.flipkey.com
+ws.flipkey.com
+www.flipkey.com
+www.helpcenter.flipkey.com
+www.messages.flipkey.com
+www.secure2.flipkey.com
+www.secure.flipkey.com
+www.ws.flipkey.com

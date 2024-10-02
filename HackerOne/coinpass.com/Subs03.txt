@@ -1,0 +1,6 @@
+uat.accounts.coinpass.com
+coinpass.com
+accounts.coinpass.com
+uat-accounts.coinpass.com
+www.coinpass.com
+www.uat-accounts.coinpass.com

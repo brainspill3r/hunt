@@ -1,0 +1,7 @@
+[azure-domain-tenant] [http] [info] https://login.microsoftonline.com:443/westernpower.com.au/v2.0/.well-known/openid-configuration ["370ab0fd-38ab-4c72-b86f-153c941f439b"]
+[credentials-disclosure] [http] [unknown] https://tst.westernpower.com.au ["api-key="sG76_-SjtT0lfxRJIt73VQ-au1""]
+[credentials-disclosure] [http] [unknown] https://prd.westernpower.com.au ["api-key="ZZH4LfBo5ceAI0ZbQlHUAQ-au1""]
+[credentials-disclosure] [http] [unknown] https://www.westernpower.com.au ["api-key="ZZH4LfBo5ceAI0ZbQlHUAQ-au1""]
+[keycloak-openid-config] [http] [info] https://auth.westernpower.com.au/.well-known/openid-configuration
+[keycloak-openid-config] [http] [info] https://testauth.westernpower.com.au/.well-known/openid-configuration
+[webpack-config] [http] [info] https://my.westernpower.com.au/webpack.config.js

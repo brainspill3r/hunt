@@ -1,0 +1,17 @@
+http://sni.cloudflaressl.com
+https://coinpass.com
+https://www-stg.coinpass.com
+https://trade.coinpass.com
+https://cp40.coinpass.com
+https://instant.coinpass.com
+https://mafiaafire.com
+https://uat-accounts.coinpass.com
+https://accounts.coinpass.com
+http://uat-trade-b.coinpass.com
+https://app-staging.coinpass.com
+https://www.uat-accounts.coinpass.com
+https://pre-prod.accounts.coinpass.com
+https://www.coinpass.com
+https://uat.accounts.coinpass.com
+https://dianahayden.com
+https://jumac.com

@@ -1,0 +1,8 @@
+https://api.uk.chalet.8x8.com
+https://client.global.chalet.8x8.com
+https://api.global.chalet.8x8.com
+https://api.us-east.chalet.8x8.com
+https://files.us-east.chalet.8x8.com
+https://files-cdn.us-east.chalet.8x8.com
+https://avatars-cdn.us-east.chalet.8x8.com
+https://client-beta.global.chalet.8x8.com

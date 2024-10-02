@@ -1,0 +1,12 @@
+g.ssl.fastly.net
+hosted-cdn-backend.statuspage.io
+manage.statuspage.io
+statuspage.io
+www.hosted-cdn-backend.statuspage.io
+www.manage.statuspage.io
+www.statuspage.io
+xid.agilecraft.com
+xid.atlassian.com
+xid.bitbucket.org
+xid.opsgenie.com
+xid.statuspage.io

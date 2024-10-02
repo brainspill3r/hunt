@@ -1,0 +1,7 @@
+jitsi.itcapital.io
+1p-scim.itcapital.io
+texis.itcapital.io
+3cxby.itcapital.io
+test-elastic-data.itcapital.io
+zero-user.itcapital.io
+pootle.itcapital.io

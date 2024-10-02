@@ -1,0 +1,26 @@
+avalanche.nu.com.mx
+bitwarden.nu.com.mx
+blog.nu.com.mx
+comunidad.nu.com.mx
+content.nu.com.mx
+data-plane-01.avalanche.nu.com.mx
+email.building.nu.com.mx
+marketing.nu.com.mx
+nu.com.mx
+Nu Pagamentos S.A. - Instituicao De Pagamento
+portal-mx.noc.nu.com.mx
+prod-global-webapp-proxy.nu.com.mx
+recommend.nu.com.mx
+sofipo.nu.com.mx
+staging-global-webapp-proxy.nu.com.mx
+staging-global-webapp-proxy.nustg.com.br
+staging-ibmmq.nu.com.mx
+staging-maxwell.nu.com.mx
+staging-www.sofipo.nu.com.mx
+testtest2.nu.com.mx
+testtest.nu.com.mx
+tls.automattic.com
+vpn.akala.nu.com.mx
+www.blog.nu.com.mx
+www.portal-mx.noc.nu.com.mx
+zendesk.nu.com.mx

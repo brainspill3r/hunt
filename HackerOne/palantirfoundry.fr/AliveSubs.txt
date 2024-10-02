@@ -1,0 +1,13 @@
+https://brick-mgmt.palantirfoundry.fr
+https://rentcortex.palantirfoundry.fr
+https://terra.palantirfoundry.fr
+https://brick-container-registry.palantirfoundry.fr
+https://demo-eiffage.palantirfoundry.fr
+https://brick.palantirfoundry.fr
+https://patient1st.palantirfoundry.fr
+https://sg-issues.palantirfoundry.fr
+https://ocean.palantirfoundry.fr
+https://engie.palantirfoundry.fr
+https://pool.palantirfoundry.fr
+https://pool-container-registry.palantirfoundry.fr
+https://pool-mgmt.palantirfoundry.fr

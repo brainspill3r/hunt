@@ -1,0 +1,9 @@
+apps.developer.allegro.pl.allegrosandbox.pl
+allegro.pl.allegrosandbox.pl
+api.allegro.pl.allegrosandbox.pl
+edge.enterprise.allegro.pl.allegrosandbox.pl
+enterprise.allegro.pl.allegrosandbox.pl
+upload.allegro.pl.allegrosandbox.pl
+t.allegro.pl.allegrosandbox.pl
+gen-chat-call.allegro.pl.allegrosandbox.pl
+webapi.allegro.pl.allegrosandbox.pl
