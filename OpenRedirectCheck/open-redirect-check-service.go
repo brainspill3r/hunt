@@ -16,8 +16,6 @@ import (
     Utils "open-redirect-check-service/Utils"
 )
 
-// Helper functions and missing code
-
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
 func remindToStartDocker() {
     cmd := exec.Command("docker", "info")
@@ -60,20 +58,11 @@ func sendDiscordNotification(webhookURL, message string) error {
     return nil
 }
 
-// Disable redirection in HTTP client and manually handle Location header
-var client = &http.Client{
-    CheckRedirect: func(req *http.Request, via []*http.Request) error {
-        return http.ErrUseLastResponse
-    },
-    Timeout: 10 * time.Second,
-}
-
 // isRedirect checks if the response is a redirect to the specified target domain
 func isRedirect(resp *http.Response, targetDomain string) bool {
-    // Check if the response is a redirect (3xx status)
     if resp.StatusCode >= 300 && resp.StatusCode < 400 {
         location := resp.Header.Get("Location")
-        fmt.Printf("Found redirect: %s\n", location)  // Debugging output
+        fmt.Printf("Found redirect: %s\n", location) // Debugging output
         return strings.Contains(location, targetDomain)
     }
     return false
@@ -82,24 +71,35 @@ func isRedirect(resp *http.Response, targetDomain string) bool {
 // checkOpenRedirect checks for open redirects
 func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
     fmt.Println("Checking for open redirects...")
+
     file, err := os.Open(urlsFile)
     if err != nil {
-        log.Fatalf("Failed to open urls.txt: %v", err)
+        log.Fatalf("Failed to open %s: %v", urlsFile, err)
     }
     defer file.Close()
 
     var urls []string
     scanner := bufio.NewScanner(file)
 
-    // List of potential redirect parameters
-    possibleRedirectParams := []string{"redirecturl", "redirect_url", "redir", "rurl", "return"}
+    // List of potential redirect parameters and paths
+    possibleRedirectParams := []string{
+        "redirect", "redirect_url", "redirect_uri", "redirectUrl", "redirectUri",
+        "redir", "return", "returnTo", "return_url", "return_uri", "next", "url",
+        "goto", "destination", "forward", "forwardTo", "callback", "target", "rurl",
+        "dest", "view", "checkout_url", "continue", "success", "data", "qurl",
+        "login", "logout", "ext", "clickurl", "rit_url", "forward_url", "action",
+        "action_url", "sp_url", "recurl", "service", "u", "link", "src", "origin",
+        "originUrl", "jump", "jump_url", "callback_url", "page", "backurl", "burl",
+        "request", "ReturnUrl", "pic", "tc?src", "allinurl", "j?url", "go", "view",
+        "image_url", "out", "/redirect", "/cgi-bin/redirect.cgi", "/out", "/login?to",
+        "return_path", "click?u", "url", "uri", "linkAddress", "location", "q",
+    }
 
+    // Read the URLs and filter by redirect parameters
     for scanner.Scan() {
         line := scanner.Text()
-
-        // Check if any of the redirect parameters are in the URL
         for _, param := range possibleRedirectParams {
-            if strings.Contains(strings.ToLower(line), param+"=") {
+            if strings.Contains(strings.ToLower(line), param+"=") || strings.Contains(line, param) {
                 urls = append(urls, line)
                 break
             }
@@ -109,39 +109,51 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
         log.Fatalf("Failed to read urls.txt: %v", err)
     }
 
+    // Disable redirection in the HTTP client and manually handle Location header
+    client := &http.Client{
+        CheckRedirect: func(req *http.Request, via []*http.Request) error {
+            return http.ErrUseLastResponse // Prevent automatic redirects
+        },
+        Timeout: 10 * time.Second, // Timeout set to 10 seconds
+    }
+
     var vulnerableUrls []string
     for _, url := range urls {
-        for _, param := range possibleRedirectParams {
-            if strings.Contains(url, param+"=") {
-                // Replace only the value of the redirect parameter with Google in the query string.
-                replacedUrl := strings.Replace(url, param+"=", param+"=https://www.google.com", 1)
-                
-                // Fetch the URL
+        found := false
+        for _, redirectParam := range possibleRedirectParams {
+            if strings.Contains(url, redirectParam) {
+                // Replace the redirect URL value with `https://www.google.com`
+                replacedUrl := strings.Replace(url, redirectParam+"=", redirectParam+"=https://www.google.com", 1)
+
+                // Fetch the URL using the global client
                 resp, err := client.Get(replacedUrl)
                 if err != nil {
-                    if os.IsTimeout(err) {
-                        log.Printf("Timeout fetching URL, skipping: %v\n", replacedUrl)
-                    } else {
-                        log.Printf("Error fetching URL: %v, skipping...\n", err)
-                    }
-                    continue
+                    log.Printf("Error fetching URL: %v, skipping...\n", err)
+                    found = true
+                    break // Exit the inner loop once a redirect is found
                 }
                 defer resp.Body.Close()
 
-                // Check for a redirect to google.com
+                // Check if the Location header redirects to https://www.google.com
                 if isRedirect(resp, "www.google.com") {
                     fmt.Printf("\033[32mVulnerable: %s\n\033[0m", replacedUrl) // Green color for vulnerable URLs
                     vulnerableUrls = append(vulnerableUrls, replacedUrl)
+                    found = true
+                    break // Exit the inner loop once a redirect is found
                 }
             }
         }
+        if found {
+            continue // Move to the next URL once a redirect is found and handled
+        }
     }
 
+    // Output the results
     if len(vulnerableUrls) > 0 {
         if err := os.WriteFile(outputFile, []byte(strings.Join(vulnerableUrls, "\n")), 0644); err != nil {
             log.Fatalf("Failed to write to %s: %v", outputFile, err)
         }
-        fmt.Println("Open redirect findings saved to open_redirects.txt.")
+        fmt.Println("Open redirect findings saved to", outputFile)
     } else {
         fmt.Println("No open redirects found.")
     }
