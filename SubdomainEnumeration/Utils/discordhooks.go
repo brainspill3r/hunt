@@ -23,12 +23,3 @@ func GetScanCompletionWebhook() string {
 	}
 	return webhook
 }
-
-// GetPotentialTakeoverWebhook retrieves the potential takeover webhook from environment variables
-func GetPotentialTakeoverWebhook() string {
-	webhook := os.Getenv("DISCORD_POTENTIAL_TAKEOVER_WEBHOOK")
-	if webhook == "" {
-		log.Fatalf("Error: DISCORD_POTENTIAL_TAKEOVER_WEBHOOK is not set in the environment variables")
-	}
-	return webhook
-}
