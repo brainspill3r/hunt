@@ -63,30 +63,30 @@ func executeCommand(cmd *exec.Cmd) {
 }
 
 // readAndCombineFiles reads and combines unique lines from multiple files
-func readAndCombineFiles(files []string, outputFile string) {
-	contentMap := make(map[string]struct{})
-	for _, file := range files {
-		data, err := ioutil.ReadFile(file)
-		if err != nil {
-			log.Fatalf("Failed to read file %s: %v", file, err)
-		}
-		lines := strings.Split(string(data), "\n")
-		for _, line := range lines {
-			if line != "" {
-				contentMap[line] = struct{}{}
-			}
-		}
-	}
-
-	outputData := ""
-	for line := range contentMap {
-		outputData += line + "\n"
-	}
-
-	if err := ioutil.WriteFile(outputFile, []byte(outputData), 0644); err != nil {
-		log.Fatalf("Failed to write to %s: %v", outputFile, err)
-	}
-}
+//func readAndCombineFiles(files []string, outputFile string) {
+//	contentMap := make(map[string]struct{})
+//	for _, file := range files {
+//		data, err := os.ReadFile(file)
+//		if err != nil {
+//			log.Fatalf("Failed to read file %s: %v", file, err)
+//		}
+//		lines := strings.Split(string(data), "\n")
+//		for _, line := range lines {
+//			if line != "" {
+//				contentMap[line] = struct{}{}
+//			}
+//		}
+//	}
+//
+//	outputData := ""
+//	for line := range contentMap {
+//		outputData += line + "\n"
+//	}
+//
+//	if err := os.WriteFile(outputFile, []byte(outputData), 0644); err != nil {
+//		log.Fatalf("Failed to write to %s: %v", outputFile, err)
+//	}
+//}
 
 // sendDiscordNotification sends a notification to a Discord webhook
 func sendDiscordNotification(webhookURL, message string) error {
