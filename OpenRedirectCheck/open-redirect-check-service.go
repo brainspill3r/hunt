@@ -70,7 +70,7 @@ func isRedirect(resp *http.Response, targetDomain string) bool {
 
 // checkOpenRedirect checks for open redirects
 func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
-    fmt.Println("Checking for open redirects...")
+    log.Println("Checking for open redirects...") // Now logs to file as well
     file, err := os.Open(urlsFile)
     if err != nil {
         log.Fatalf("Failed to open urls.txt: %v", err)
@@ -122,7 +122,7 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
                     // Construct the URL up to the redirect parameter and then append the new value
                     replacedUrl := url[:startIdx+len(redirectParam)+1] + "https://www.google.com"
 
-                    // Fetch the URL using the global client
+                    // Fetch the URL using the client
                     resp, err := client.Get(replacedUrl)
                     if err != nil {
                         log.Printf("Error fetching URL: %v, skipping...\n", err)
@@ -132,7 +132,7 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
                     defer resp.Body.Close()
 
                     if isRedirect(resp, "www.google.com") {
-                        fmt.Printf("\033[32mVulnerable: %s\n\033[0m", replacedUrl) // Green color for vulnerable URLs
+                        log.Printf("\033[32mVulnerable: %s\n\033[0m", replacedUrl) // Green color for vulnerable URLs
                         vulnerableUrls = append(vulnerableUrls, replacedUrl)
                         found = true
                         break // Exit the inner loop once a redirect is found
@@ -150,16 +150,26 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
         if err := os.WriteFile(outputFile, []byte(strings.Join(vulnerableUrls, "\n")), 0644); err != nil {
             log.Fatalf("Failed to write to %s: %v", outputFile, err)
         }
-        fmt.Println("Open redirect findings saved to", outputFile)
+        log.Println("Open redirect findings saved to", outputFile)
     } else {
-        fmt.Println("No open redirects found.")
+        log.Println("No open redirects found.")
     }
 
     done <- true
 }
 
-
 func main() {
+    // Set up logging to both a log file and the console
+    logFile, err := os.OpenFile("/home/brainspiller/Documents/hunt/logs/open_redirect_check.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    if err != nil {
+        log.Fatalf("Failed to create log file: %v", err)
+    }
+    defer logFile.Close()
+
+    // Create a multi-writer to write to both the file and console
+    mw := io.MultiWriter(os.Stdout, logFile)
+    log.SetOutput(mw)
+
     // Load environment variables from the .discordhooks.env file
     Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
 
@@ -169,8 +179,8 @@ func main() {
     remindToStartDocker()
 
     if len(os.Args) != 3 {
-        fmt.Println("Usage: go run open-redirect-check-service.go <domain> <program>")
-        fmt.Println("Programs: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
+        log.Println("Usage: go run open-redirect-check-service.go <domain> <program>")
+        log.Println("Programs: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
         os.Exit(1)
     }
 
@@ -179,13 +189,13 @@ func main() {
     outputBaseDir := "/home/brainspiller/Documents/hunt"
 
     if !validateProgram(program) {
-        fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
+        log.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
         os.Exit(1)
     }
 
     outputDir := filepath.Join(outputBaseDir, program, domain)
 
-    fmt.Printf("Changing to output directory: %s\n", outputDir)
+    log.Printf("Changing to output directory: %s\n", outputDir)
     if err := os.Chdir(outputDir); err != nil {
         log.Fatalf("Failed to change directory: %v", err)
     }
