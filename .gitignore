@@ -9,3 +9,7 @@ domains_sub.txt
 .env
 /Brute53
 .discordhooks.env
+/PortScanning
+/ParameterJSExtraction
+/URLCollection
+/XSSDetection
