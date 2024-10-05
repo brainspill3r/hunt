@@ -11,5 +11,4 @@ domains_sub.txt
 .discordhooks.env
 /PortScanning
 /ParameterJSExtraction
-/URLCollection
 /XSSDetection
