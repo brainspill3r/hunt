@@ -1,18 +1,17 @@
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "log"
-    "net/http"
-    "os"
-    "os/exec"
-    "path/filepath"
-    "strings"
-    "syscall"
-    "time"
+	"bytes"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
+	"syscall"
+	"time"
+	Utils "xss-service/Utils"
 )
 
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
@@ -90,29 +89,18 @@ func showProgress(pid int) {
     }
 }
 
-// sendDiscordNotification sends a notification to a Discord webhook
-func sendDiscordNotification(webhookURL, message string) error {
-    payload := map[string]string{"content": message}
-    jsonData, err := json.Marshal(payload)
-    if err != nil {
-        return fmt.Errorf("failed to marshal payload: %v", err)
-    }
-
-    resp, err := http.Post(webhookURL, "application/json", bytes.NewBuffer(jsonData))
-    if err != nil {
-        return fmt.Errorf("failed to send POST request: %v", err)
-    }
-    defer resp.Body.Close()
-
-    if resp.StatusCode != http.StatusNoContent {
-        body, _ := ioutil.ReadAll(resp.Body)
-        return fmt.Errorf("unexpected response from Discord: %s", body)
-    }
-
-    return nil
-}
-
 func main() {
+     // Set up logging to both a log file and the console
+	logFilePath := "/home/brainspiller/Documents/hunt/logs/xss-service.log"
+	logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Failed to create log file: %v", err)
+	}
+	defer logFile.Close()
+
+	mw := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(mw)
+
     remindToStartDocker()
 
     if len(os.Args) != 3 {
@@ -126,7 +114,12 @@ func main() {
     outputBaseDir := "/home/brainspiller/Documents/hunt"
     toolDir := "/home/brainspiller/go/bin"
     uroPath := "/usr/local/bin/uro"
-    discordWebhookURL := "https://discord.com/api/webhooks/1260997894035734548/gy5BbNRUfbxRshN5xSAYNk3YJGEwiZnVBRps596flOGgFBQlh2n8YTp1_q9IZmnTH-9y"
+
+    // Load environment variables from the .discordhooks.env file
+    Utils.LoadEnv("/home/brainspiller/Documents/hunt")
+
+    // Get the Discord webhook URL for XSS detection from the environment
+    discordWebhookURL := Utils.GetXSSServiceWebhook()
 
     if !validateProgram(program) {
         fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
@@ -169,7 +162,7 @@ func main() {
     fmt.Println("\033[31mXSS detection completed\033[0m")
 
     message := fmt.Sprintf("Bug bounty - **XSS Detection Service** has completed for **%s** on **%s**. Check your **xss.txt** and **XSSVulnerablepayloads.txt** to see the results.", domain, program)
-    if err := sendDiscordNotification(discordWebhookURL, message); err != nil {
+    if err := Utils.SendDiscordNotification(discordWebhookURL, message); err != nil {
         log.Fatalf("Failed to send Discord notification: %v", err)
     }
 }
