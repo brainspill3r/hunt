@@ -1,18 +1,19 @@
 package main
 
 import (
-    "bytes"
-    "encoding/json"
     "fmt"
-    "io/ioutil"
     "log"
-    "net/http"
     "os"
+    "io"
+    "bytes"
     "os/exec"
+    "net/http"
     "path/filepath"
     "strings"
     "syscall"
     "time"
+    "encoding/json"
+    Utils "port-scanning-service/Utils"
 )
 
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
@@ -87,7 +88,7 @@ func sendDiscordNotification(webhookURL, message string) error {
     defer resp.Body.Close()
 
     if resp.StatusCode != http.StatusNoContent {
-        body, _ := ioutil.ReadAll(resp.Body)
+        body, _ := io.ReadAll(resp.Body)
         return fmt.Errorf("unexpected response from Discord: %s", body)
     }
 
@@ -95,6 +96,12 @@ func sendDiscordNotification(webhookURL, message string) error {
 }
 
 func main() {
+    // Load environment variables from the .discordhooks.env file
+    Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
+
+    // Get the Discord webhook URL from the environment
+    discordWebhookURL := Utils.GetPortScanningWebhook()
+
     remindToStartDocker()
 
     if len(os.Args) != 3 {
@@ -107,7 +114,6 @@ func main() {
     program := os.Args[2]
     outputBaseDir := "/home/brainspiller/Documents/hunt"
     toolDir := "/home/brainspiller/go/bin"
-    discordWebhookURL := "https://discord.com/api/webhooks/1260990358658220063/mQFTqvtv6NDK3Jtte9K1ZG8xloFXu38lPk6eJyMXinA0Zk2Uz0wiTXOpiIY_IuhOT6qB"
 
     if !validateProgram(program) {
         fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
@@ -133,13 +139,13 @@ func main() {
     if err != nil {
         log.Fatalf("Naabu scan failed: %v", err)
     }
-    if err := ioutil.WriteFile(naabuOutputFile, []byte(naabuOutput), 0644); err != nil {
+    if err := os.WriteFile(naabuOutputFile, []byte(naabuOutput), 0644); err != nil {
         log.Fatalf("Failed to write to %s: %v", naabuOutputFile, err)
     }
     fmt.Println("\033[32mNaabu scan completed and results saved in", naabuOutputFile, "\033[0m")
 
     targetsFile := filepath.Join(outputDir, "targets.txt")
-    if err := ioutil.WriteFile(targetsFile, []byte(domain), 0644); err != nil {
+    if err := os.WriteFile(targetsFile, []byte(domain), 0644); err != nil {
         log.Fatalf("Failed to write to targets.txt: %v", err)
     }
 
