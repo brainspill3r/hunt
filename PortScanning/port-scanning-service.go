@@ -96,77 +96,80 @@ func sendDiscordNotification(webhookURL, message string) error {
 }
 
 func main() {
-    // Load environment variables from the .discordhooks.env file
-    Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
+     // Load environment variables from the .discordhooks.env file
+     Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
 
-    // Get the Discord webhook URL from the environment
-    discordWebhookURL := Utils.GetPortScanningWebhook()
-
-    remindToStartDocker()
-
-    if len(os.Args) != 3 {
-        fmt.Println("Usage: go run port-scanning-service.go <domain> <program>")
-        fmt.Println("Programs: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
-        os.Exit(1)
-    }
-
-    domain := os.Args[1]
-    program := os.Args[2]
-    outputBaseDir := "/home/brainspiller/Documents/hunt"
-    toolDir := "/home/brainspiller/go/bin"
-
-    if !validateProgram(program) {
-        fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
-        os.Exit(1)
-    }
-
-    outputDir := filepath.Join(outputBaseDir, program, domain)
-
-    fmt.Printf("Creating output directory: %s\n", outputDir)
-    if err := os.MkdirAll(outputDir, os.ModePerm); err != nil {
-        log.Fatalf("Failed to create output directory: %v", err)
-    }
-
-    fmt.Printf("Changing to output directory: %s\n", outputDir)
-    if err := os.Chdir(outputDir); err != nil {
-        log.Fatalf("Failed to change directory: %v", err)
-    }
-
-    // Naabu scan
-    naabuOutputFile := fmt.Sprintf("%s.naabu.txt", domain)
-    naabuCmd := exec.Command(filepath.Join(toolDir, "naabu"), "-host", domain)
-    naabuOutput, err := executeCommandWithOutput(naabuCmd)
-    if err != nil {
-        log.Fatalf("Naabu scan failed: %v", err)
-    }
-    if err := os.WriteFile(naabuOutputFile, []byte(naabuOutput), 0644); err != nil {
-        log.Fatalf("Failed to write to %s: %v", naabuOutputFile, err)
-    }
-    fmt.Println("\033[32mNaabu scan completed and results saved in", naabuOutputFile, "\033[0m")
-
-    targetsFile := filepath.Join(outputDir, "targets.txt")
-    if err := os.WriteFile(targetsFile, []byte(domain), 0644); err != nil {
-        log.Fatalf("Failed to write to targets.txt: %v", err)
-    }
-
-    // Nmap scans
-    nmapScriptBannerFile := "nmapscriptbanner.txt"
-    nmapCustomScriptAndVersion1_1000File := "nmapcustomscriptandversion1-1000.txt"
-    nmapCustomScriptAndVersion1000_5000File := "nmapcustomscriptandversion1000-5000.txt"
-
-    nmapCmd1 := exec.Command("nmap", "-sV", "--script=banner", "-iL", targetsFile, "-oN", nmapScriptBannerFile)
-    executeCommand(nmapCmd1)
-    fmt.Println("\033[31mNmap script banner scan completed and results saved in", nmapScriptBannerFile, "\033[0m")
-
-    nmapCmd2 := exec.Command("nmap", "-sCV", "-iL", targetsFile, "-p", "1-1000", "-Pn", "-oN", nmapCustomScriptAndVersion1_1000File)
-    executeCommand(nmapCmd2)
-    fmt.Println("\033[31mNmap custom script and version scan (ports 1-1000) completed and results saved in", nmapCustomScriptAndVersion1_1000File, "\033[0m")
-
-    nmapCmd3 := exec.Command("nmap", "-sCV", "-iL", targetsFile, "-p", "1000-5000", "-Pn", "-oN", nmapCustomScriptAndVersion1000_5000File)
-    executeCommand(nmapCmd3)
-    fmt.Println("\033[31mNmap custom script and version scan (ports 1000-5000) completed and results saved in", nmapCustomScriptAndVersion1000_5000File, "\033[0m")
-
-    fmt.Println("\033[31mPort scanning completed\033[0m")
+     // Get the Discord webhook URL from the environment
+     discordWebhookURL := Utils.GetPortScanningWebhook()
+ 
+     remindToStartDocker()
+ 
+     if len(os.Args) != 3 {
+         fmt.Println("Usage: go run port-scanning-service.go <domain> <program>")
+         fmt.Println("Programs: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
+         os.Exit(1)
+     }
+ 
+     domain := os.Args[1]
+     program := os.Args[2]
+     outputBaseDir := "/home/brainspiller/Documents/hunt"
+     toolDir := "/home/brainspiller/go/bin"
+ 
+     if !validateProgram(program) {
+         fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
+         os.Exit(1)
+     }
+ 
+     outputDir := filepath.Join(outputBaseDir, program, domain)
+ 
+     fmt.Printf("Creating output directory: %s\n", outputDir)
+     if err := os.MkdirAll(outputDir, os.ModePerm); err != nil {
+         log.Fatalf("Failed to create output directory: %v", err)
+     }
+ 
+     fmt.Printf("Changing to output directory: %s\n", outputDir)
+     if err := os.Chdir(outputDir); err != nil {
+         log.Fatalf("Failed to change directory: %v", err)
+     }
+ 
+     // Naabu scan
+     naabuOutputFile := fmt.Sprintf("%s.naabu.txt", domain)
+     naabuCmd := exec.Command(filepath.Join(toolDir, "naabu"), "-host", domain)
+ 
+     go showProgress(naabuCmd.Process.Pid)
+ 
+     naabuOutput, err := executeCommandWithOutput(naabuCmd)
+     if err != nil {
+         log.Fatalf("Naabu scan failed: %v", err)
+     }
+     if err := os.WriteFile(naabuOutputFile, []byte(naabuOutput), 0644); err != nil {
+         log.Fatalf("Failed to write to %s: %v", naabuOutputFile, err)
+     }
+     fmt.Println("\033[32mNaabu scan completed and results saved in", naabuOutputFile, "\033[0m")
+ 
+     targetsFile := filepath.Join(outputDir, "targets.txt")
+     if err := os.WriteFile(targetsFile, []byte(domain), 0644); err != nil {
+         log.Fatalf("Failed to write to targets.txt: %v", err)
+     }
+ 
+     // Nmap scans - declare the file names here
+     nmapScriptBannerFile := "nmapscriptbanner.txt"
+     nmapCustomScriptAndVersion1_1000File := "nmapcustomscriptandversion1-1000.txt"
+     nmapCustomScriptAndVersion1000_5000File := "nmapcustomscriptandversion1000-5000.txt"
+ 
+     nmapCmd1 := exec.Command("nmap", "-sV", "--script=banner", "-iL", targetsFile, "-oN", nmapScriptBannerFile)
+     executeCommand(nmapCmd1)
+     fmt.Println("\033[31mNmap script banner scan completed and results saved in", nmapScriptBannerFile, "\033[0m")
+ 
+     nmapCmd2 := exec.Command("nmap", "-sCV", "-iL", targetsFile, "-p", "1-1000", "-Pn", "-oN", nmapCustomScriptAndVersion1_1000File)
+     executeCommand(nmapCmd2)
+     fmt.Println("\033[31mNmap custom script and version scan (ports 1-1000) completed and results saved in", nmapCustomScriptAndVersion1_1000File, "\033[0m")
+ 
+     nmapCmd3 := exec.Command("nmap", "-sCV", "-iL", targetsFile, "-p", "1000-5000", "-Pn", "-oN", nmapCustomScriptAndVersion1000_5000File)
+     executeCommand(nmapCmd3)
+     fmt.Println("\033[31mNmap custom script and version scan (ports 1000-5000) completed and results saved in", nmapCustomScriptAndVersion1000_5000File, "\033[0m")
+ 
+     fmt.Println("\033[31mPort scanning completed\033[0m")
 
     message := fmt.Sprintf("Bug bounty - **Port-Scanning-Service** has completed for **%s** on **%s**. Check your scan results in %s.**naabu.txt**, **nmapscriptbanner.txt, nmapcustomscriptandversion1-1000.txt, and nmapcustomscriptandversion1000-5000.txt**", domain, program, domain)
     if err := sendDiscordNotification(discordWebhookURL, message); err != nil {
