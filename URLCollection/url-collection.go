@@ -4,13 +4,14 @@ import (
     "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "io"
     "log"
     "net/http"
     "os"
     "os/exec"
     "path/filepath"
     "strings"
+    Utils "url-collection/Utils"
 )
 
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
@@ -61,16 +62,6 @@ func executeCommand(cmd *exec.Cmd) {
     }
 }
 
-// executeCommandWithOutput runs a command and captures its output
-func executeCommandWithOutput(cmd *exec.Cmd) (string, error) {
-    fmt.Printf("\033[33mExecuting command: %s\033[0m\n", strings.Join(cmd.Args, " ")) // Orange color for executing commands
-    var out bytes.Buffer
-    cmd.Stdout = &out
-    cmd.Stderr = &out
-    err := cmd.Run()
-    return out.String(), err
-}
-
 // sendDiscordNotification sends a notification to a Discord webhook
 func sendDiscordNotification(webhookURL, message string) error {
     payload := map[string]string{"content": message}
@@ -86,7 +77,7 @@ func sendDiscordNotification(webhookURL, message string) error {
     defer resp.Body.Close()
 
     if resp.StatusCode != http.StatusNoContent {
-        body, _ := ioutil.ReadAll(resp.Body)
+        body, _ := io.ReadAll(resp.Body)
         return fmt.Errorf("unexpected response from Discord: %s", body)
     }
 
@@ -94,6 +85,23 @@ func sendDiscordNotification(webhookURL, message string) error {
 }
 
 func main() {
+    // Set up logging to both a log file and the console
+	logFilePath := "/home/brainspiller/Documents/hunt/logs/url_collection.log"
+	logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Failed to create log file: %v", err)
+	}
+	defer logFile.Close()
+
+	mw := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(mw)
+
+    // Load environment variables from the .discordhooks.env file
+    Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
+
+    // Get the Discord webhook URL for URL collection from the environment
+    discordWebhookURL := Utils.GetURLCollectionWebhook()
+
     remindToStartDocker()
 
     if len(os.Args) != 3 {
@@ -106,7 +114,7 @@ func main() {
     program := os.Args[2]
     outputBaseDir := "/home/brainspiller/Documents/hunt"
     toolDir := "/home/brainspiller/go/bin"
-    discordWebhookURL := "https://discord.com/api/webhooks/1260547967639879711/7g2e_dKU6tgsDAU7UL0pp0Z2-1Afjpbn6T4r939ox0mLJd6XBNR2c4s7Y8-fDFrFHDey"
+   
 
     if !validateProgram(program) {
         fmt.Println("Invalid program. Choose from: Bugcrowd, HackerOne, Intigriti, Synack, YesWeHack")
