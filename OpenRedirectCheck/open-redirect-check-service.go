@@ -18,6 +18,13 @@ import (
 
 var uniqueMessages = make(map[string]bool) // A map to track unique vulnerable URLs
 
+// logUniqueMessage logs a message only if it hasn't been logged before
+func logUniqueMessage(message string) {
+    if _, exists := uniqueMessages[message]; !exists {
+        fmt.Printf("\033[32m%s\033[0m\n", message) // Green text for unique messages
+        uniqueMessages[message] = true
+    }
+}
 
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
 func remindToStartDocker() {
@@ -60,15 +67,6 @@ func sendDiscordNotification(webhookURL, message string) error {
 
     return nil
 }
-
-// logUniqueMessage logs a message only if it hasn't been logged before
-func logUniqueMessage(message string) {
-    if _, exists := uniqueMessages[message]; !exists {
-        log.Println(message)
-        uniqueMessages[message] = true
-    }
-}
-
 
 // isRedirect checks if the response is a redirect to the specified target domain
 func isRedirect(resp *http.Response, targetDomain string) bool {
