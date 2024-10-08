@@ -16,6 +16,9 @@ import (
     Utils "open-redirect-check-service/Utils"
 )
 
+var uniqueMessages = make(map[string]bool) // A map to track unique vulnerable URLs
+
+
 // remindToStartDocker checks if Docker is running and reminds the user to start it if not
 func remindToStartDocker() {
     cmd := exec.Command("docker", "info")
@@ -57,6 +60,15 @@ func sendDiscordNotification(webhookURL, message string) error {
 
     return nil
 }
+
+// logUniqueMessage logs a message only if it hasn't been logged before
+func logUniqueMessage(message string) {
+    if _, exists := uniqueMessages[message]; !exists {
+        log.Println(message)
+        uniqueMessages[message] = true
+    }
+}
+
 
 // isRedirect checks if the response is a redirect to the specified target domain
 func isRedirect(resp *http.Response, targetDomain string) bool {
@@ -132,7 +144,7 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
                     defer resp.Body.Close()
 
                     if isRedirect(resp, "www.google.com") {
-                        log.Printf("\033[32mVulnerable: %s\n\033[0m", replacedUrl) // Green color for vulnerable URLs
+                        logUniqueMessage(fmt.Sprintf("Vulnerable: %s", replacedUrl)) // Log unique vulnerable URLs
                         vulnerableUrls = append(vulnerableUrls, replacedUrl)
                         found = true
                         break // Exit the inner loop once a redirect is found
