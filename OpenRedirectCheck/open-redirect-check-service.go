@@ -160,15 +160,15 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
 
 func main() {
     // Set up logging to both a log file and the console
-    logFile, err := os.OpenFile("/home/brainspiller/Documents/hunt/logs/open_redirect.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-    if err != nil {
-        log.Fatalf("Failed to create log file: %v", err)
-    }
-    defer logFile.Close()
+    // logFile, err := os.OpenFile("/home/brainspiller/Documents/hunt/logs/open_redirect.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    // if err != nil {
+    //     log.Fatalf("Failed to create log file: %v", err)
+    // }
+    // defer logFile.Close()
 
-    // Create a multi-writer to write to both the file and console
-    mw := io.MultiWriter(os.Stdout, logFile)
-    log.SetOutput(mw)
+    // // Create a multi-writer to write to both the file and console
+    // mw := io.MultiWriter(os.Stdout, logFile)
+    // log.SetOutput(mw)
 
     // Load environment variables from the .discordhooks.env file
     Utils.LoadEnv("/home/brainspiller/Documents/hunt/.discordhooks.env")
