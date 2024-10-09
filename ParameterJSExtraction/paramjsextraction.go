@@ -137,13 +137,13 @@ func main() {
 
     go func() {
         defer wg.Done()
-        grepParamCmd := exec.Command("sh", "-c", fmt.Sprintf("cat %s | grep '=' | tee %s", urlsFile, paramFile))
+        grepParamCmd := exec.Command("/usr/bin/bash", "-c", fmt.Sprintf("cat %s | grep '=' | tee %s", urlsFile, paramFile))
         executeCommand(grepParamCmd)
     }()
 
     go func() {
         defer wg.Done()
-        grepJsCmd := exec.Command("sh", "-c", fmt.Sprintf("cat %s | grep -iE '.js' | grep -ivE '.json' | sort -u | tee %s", urlsFile, jsFile))
+        grepJsCmd := exec.Command("/usr/bin/sh", "-c", fmt.Sprintf("cat %s | grep -iE '.js' | grep -ivE '.json' | sort -u | tee %s", urlsFile, jsFile))
         executeCommand(grepJsCmd)
     }()
 
