@@ -139,17 +139,17 @@ func main() {
         log.Fatalf("AllSubs.txt does not exist in the specified directory")
     }
 
-    waybackurlsCmd := exec.Command("sh", "-c", fmt.Sprintf("cat %s | %s | tee urls.txt", allSubsFile, filepath.Join(toolDir, "waybackurls")))
+    waybackurlsCmd := exec.Command("/usr/bin/bash", "-c", fmt.Sprintf("cat %s | %s | tee urls.txt", allSubsFile, filepath.Join(toolDir, "waybackurls")))
     executeCommand(waybackurlsCmd)
     fmt.Println("\033[32mWaybackurls completed\033[0m")
 
     fmt.Println("Extracting parameters from URLs...")
-    grepParamCmd := exec.Command("sh", "-c", "grep '=' urls.txt | tee param.txt")
+    grepParamCmd := exec.Command("/usr/bin/bash", "-c", "grep '=' urls.txt | tee param.txt")
     executeCommand(grepParamCmd)
     fmt.Println("\033[32mParameter extraction completed\033[0m")
 
     fmt.Println("Extracting JavaScript files from URLs...")
-    grepJsCmd := exec.Command("sh", "-c", "grep -iE '.js' urls.txt | grep -ivE '.json' | sort -u | tee js.txt")
+    grepJsCmd := exec.Command("/usr/bin/bash", "-c", "grep -iE '.js' urls.txt | grep -ivE '.json' | sort -u | tee js.txt")
     executeCommand(grepJsCmd)
     fmt.Println("\033[32mJavaScript file extraction completed\033[0m")
 
