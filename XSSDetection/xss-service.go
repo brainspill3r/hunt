@@ -3,8 +3,8 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"io"
 	"log"
+
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -90,16 +90,33 @@ func showProgress(pid int) {
 }
 
 func main() {
-     // Set up logging to both a log file and the console
-	logFilePath := "/home/brainspiller/Documents/hunt/logs/xss-service.log"
-	logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatalf("Failed to create log file: %v", err)
-	}
-	defer logFile.Close()
+    cmd := exec.Command("echo", "Running XSS detection command...")
 
-	mw := io.MultiWriter(os.Stdout, logFile)
-	log.SetOutput(mw)
+    output, err := executeCommandWithOutput(cmd)
+    if err != nil {
+        log.Fatalf("Command failed: %v", err)
+    }
+    fmt.Println("Command output:", output)
+
+    // Start showing progress in a separate goroutine
+    go showProgress(os.Getpid())
+
+    // Wait for the command to finish
+    if err := cmd.Wait(); err != nil {
+    log.Fatalf("Command finished with error: %v", err)
+    }
+
+
+    // Set up logging to both a log file and the console
+	//logFilePath := "/home/brainspiller/Documents/hunt/logs/xss-service.log"
+	//logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	//if err != nil {
+	//	log.Fatalf("Failed to create log file: %v", err)
+	//}
+	//defer logFile.Close()
+
+	//mw := io.MultiWriter(os.Stdout, logFile)
+	//log.SetOutput(mw)
 
     remindToStartDocker()
 
@@ -136,7 +153,7 @@ func main() {
 
     fmt.Println("\033[32mProcessing URLs for potential XSS...\033[0m")
 
-    xssCmd := exec.Command("sh", "-c", fmt.Sprintf("cat %s | %s | %s xss | tee %s", filepath.Join(outputDir, "urls.txt"), uroPath, filepath.Join(toolDir, "gf"), filepath.Join(outputDir, "xss.txt")))
+    xssCmd := exec.Command("/usr/bin/bash", "-c", fmt.Sprintf("cat %s | %s | %s xss | tee %s", filepath.Join(outputDir, "param.txt"), uroPath, filepath.Join(toolDir, "gf"), filepath.Join(outputDir, "xss.txt")))
     executeCommand(xssCmd)
 
     xssFile := filepath.Join(outputDir, "xss.txt")
