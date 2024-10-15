@@ -2,7 +2,7 @@
 
 # Configuration
 CONFIG_FILE="/home/brainspiller/Documents/hunt/domains.txt"
-LOG_FILE="/home/brainspiller/Documents/hunt/logs/lfi_xss.log"
+LOG_FILE="/home/brainspiller/Documents/hunt/logs/lfi.log"
 TOOLS_DIR="/home/brainspiller/Documents/hunt"
 
 # Function to run a tool
