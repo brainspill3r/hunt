@@ -12,3 +12,4 @@ domains_sub.txt
 /UpdateDomains
 /.OLD
 /GCPBrute
+.gitignore
