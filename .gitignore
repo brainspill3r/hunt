@@ -11,3 +11,4 @@ domains_sub.txt
 .discordhooks.env
 /UpdateDomains
 /.OLD
+/GCPBrute
