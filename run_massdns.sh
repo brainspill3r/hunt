@@ -3,12 +3,12 @@
 CONFIG_FILE="/home/brainspiller/Documents/hunt/domains_sub.txt"
 LOG_FILE="/home/brainspiller/Documents/hunt/logs/massdns.log"
 TOOLS_DIR="/home/brainspiller/Documents/hunt/MassDNS"
-GO_SCRIPT="$TOOLS_DIR/massdns.go"
+GO_SCRIPT="$TOOLS_DIR/massdns"
 
 # Check if Go script exists
 if [[ ! -f "$GO_SCRIPT" ]]; then
     echo "Go script $GO_SCRIPT not found!" | tee -a $LOG_FILE
-    exit 1
+    exit 1c
 fi
 
 # Check if the configuration file exists

@@ -120,14 +120,14 @@ var vulnerableNameservers = []string{
 }
 
 // Load Discord webhook URLs from the .env file
-func loadDiscordHooks() (string, string, error) {
+func loadDiscordHooks() (string, error) {
 	err := godotenv.Load("/home/brainspiller/Documents/hunt/.discordhooks.env")
 	if err != nil {
-		return "", "", fmt.Errorf("error loading .env file: %v", err)
+		return "", fmt.Errorf("error loading .env file: %v", err)
 	}
-	scanCompletionWebhook := os.Getenv("DISCORD_SCAN_COMPLETION_WEBHOOK")
+	//scanCompletionWebhook := os.Getenv("DISCORD_SCAN_COMPLETION_WEBHOOK")
 	potentialTakeoverWebhook := os.Getenv("DISCORD_POTENTIAL_TAKEOVER_WEBHOOK")
-	return scanCompletionWebhook, potentialTakeoverWebhook, nil
+	return potentialTakeoverWebhook, nil
 }
 
 // Send a notification to Discord
@@ -199,7 +199,7 @@ func filterResults(outputFile string) ([]map[string]interface{}, error) {
 
 func main() {
 	// Load Discord webhook URLs
-	scanCompletionWebhook, potentialTakeoverWebhook, err := loadDiscordHooks()
+	potentialTakeoverWebhook, err := loadDiscordHooks()
 	if err != nil {
 		log.Fatalf("Failed to load Discord webhooks: %v", err)
 	}
@@ -326,11 +326,11 @@ for _, result := range results {
 	}
 
 	// Send a completion message to Discord
-	completionMessage := "MassDNS Processing completed."
-	if err := sendDiscordNotification(scanCompletionWebhook, completionMessage); err != nil {
-		log.Printf("Failed to send completion notification: %v", err)
+	//completionMessage := "MassDNS Processing completed."
+	//if err := sendDiscordNotification(scanCompletionWebhook, completionMessage); err != nil {
+	//	log.Printf("Failed to send completion notification: %v", err)
 
-	}
+	//}
 
 	fmt.Println("MassDNS Processing completed.")
 	}
