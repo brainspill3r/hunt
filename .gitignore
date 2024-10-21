@@ -13,3 +13,6 @@ domains_sub.txt
 /.OLD
 /GCPBrute
 .gitignore
+/SubdomainEnumeration
+
+
