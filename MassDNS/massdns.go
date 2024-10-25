@@ -248,7 +248,6 @@ func main() {
 		}
 
 		// Notify for each NXDOMAIN or SERVFAIL result
-		// Notify for each NXDOMAIN or SERVFAIL result
 for _, result := range results {
     // Safely get the status
     status, statusOk := result["status"].(string)
