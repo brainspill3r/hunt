@@ -63,7 +63,6 @@ var vulnerableServices = map[string]string{
 	`lambda-url\.\w+-\w+-\d+\.amazonaws\.com`:  "403 Forbidden",                                // Lambda URL patterns
 
 	// Added Azure Services (All check for NXDOMAIN)
-	"cloudapp.net":            "NXDOMAIN",
 	"cloudapp.azure.com":      "NXDOMAIN",
 	"azurewebsites.net":       "NXDOMAIN",
 	"blob.core.windows.net":   "NXDOMAIN",
