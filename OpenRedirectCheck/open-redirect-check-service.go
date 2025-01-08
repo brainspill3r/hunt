@@ -95,7 +95,7 @@ func checkOpenRedirect(urlsFile, outputFile string, done chan bool) {
         "redirect", "redirect_url", "redirect_uri", "redirectUrl", "redirectUri",
         "redir", "return", "returnTo", "return_url", "return_uri", "next", "url",
         "goto", "destination", "forward", "forwardTo", "callback", "target", "rurl", "dest",
-        "success", "return_path", "continue", "page", "service", "origin", "originUrl",
+        "success", "return_path", "continue", "page", "service", "origin", "originUrl", "file",
     }
 
     for scanner.Scan() {
