@@ -356,10 +356,10 @@ for _, result := range results {
             }
         }
 		// Add to cache after sending notification
-		if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
-			log.Printf("Failed to add to cache: %v", err)
-		}
-		
+		//if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
+		//	log.Printf("Failed to add to cache: %v", err)
+		//}
+
     } else if status == "SERVFAIL" {
         // Get nameservers safely
         nameservers, nsOk := result["ns"].([]interface{})
