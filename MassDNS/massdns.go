@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
 	"github.com/joho/godotenv"
 )
 
@@ -158,49 +159,48 @@ func sendDiscordNotification(webhookURL, message string) error {
 
 // Check if the subdomain for the given program is already in the cache
 func isSubdomainNotified(subdomain, program, cacheFilePath string) bool {
-    file, err := os.Open(cacheFilePath)
-    if err != nil {
-        if os.IsNotExist(err) {
-            return false // Cache file does not exist; no notifications have been sent
-        }
-        fmt.Printf("Error opening cache file: %v\n", err)
-        return false
-    }
-    defer file.Close()
+	file, err := os.Open(cacheFilePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return false // Cache file does not exist; no notifications have been sent
+		}
+		fmt.Printf("Error opening cache file: %v\n", err)
+		return false
+	}
+	defer file.Close()
 
-    scanner := bufio.NewScanner(file)
-    for scanner.Scan() {
-        line := scanner.Text()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
 
-        // Check if the line contains the program and subdomain
-        if strings.Contains(line, fmt.Sprintf("[%s] %s", program, subdomain)) {
-            return true // Subdomain and program are already notified
-        }
-    }
+		// Check if the line contains the program and subdomain
+		if strings.Contains(line, fmt.Sprintf("[%s] %s", program, subdomain)) {
+			return true // Subdomain and program are already notified
+		}
+	}
 
-    if err := scanner.Err(); err != nil {
-        fmt.Printf("Error reading cache file: %v\n", err)
-    }
+	if err := scanner.Err(); err != nil {
+		fmt.Printf("Error reading cache file: %v\n", err)
+	}
 
-    return false
+	return false
 }
 
 
 // Add the subdomain and program to the cache file after sending the notification
 func addSubdomainToCache(subdomain, program, cacheFilePath string) error {
-    file, err := os.OpenFile(cacheFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-    if err != nil {
-        return fmt.Errorf("error opening cache file for writing: %v", err)
-    }
-    defer file.Close()
+	file, err := os.OpenFile(cacheFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return fmt.Errorf("error opening cache file for writing: %v", err)
+	}
+	defer file.Close()
 
-    cacheEntry := fmt.Sprintf("[%s] %s - %s\n", program, subdomain, time.Now().Format("2006-01-02 15:04:05"))
-    fmt.Printf("Adding to cache: %s\n", cacheEntry)
-    if _, err := file.WriteString(cacheEntry); err != nil {
-        return fmt.Errorf("error writing to cache file: %v", err)
-    }
-
-    return nil
+	cacheEntry := fmt.Sprintf("[%s] %s - %s\n", program, subdomain, time.Now().Format("2006-01-02 15:04:05"))
+	fmt.Printf("Adding to cache: %s\n", cacheEntry)
+	if _, err := file.WriteString(cacheEntry); err != nil {
+		return fmt.Errorf("error writing to cache file: %v", err)
+	}
+	return nil
 }
 
 
@@ -215,34 +215,35 @@ func runMassDNS(inputFile, outputFile string) error {
 
 // Filter results for NXDOMAIN and SERVFAIL
 func filterResults(outputFile string) ([]map[string]interface{}, error) {
-    data, err := os.ReadFile(outputFile)
-    if err != nil {
-        return nil, fmt.Errorf("failed to read MassDNS output: %v", err)
-    }
+	data, err := os.ReadFile(outputFile)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read MassDNS output: %v", err)
 
-    var results []map[string]interface{}
-    lines := strings.Split(string(data), "\n")
-    for _, line := range lines {
-        if len(line) == 0 {
-            continue // Skip empty lines
-        }
+	}
 
-        var result map[string]interface{}
-        if err := json.Unmarshal([]byte(line), &result); err != nil {
-            log.Printf("Error parsing JSON: %v", err)
-            log.Printf("Raw data: %s", line)
-            continue // Skip if parsing fails
-        }
+	var results []map[string]interface{}
+	lines := strings.Split(string(data), "\n")
+	for _, line := range lines {
+		if len(line) == 0 {
+			continue // Skip empty lines
+		}
 
-        // Check for the status
-        if status, ok := result["status"].(string); ok {
-            // Only add results with NXDOMAIN or SERVFAIL statuses
-            if status == "NXDOMAIN" || status == "SERVFAIL" {
-                results = append(results, result) // Add the result to the list if it matches
-            }
-        }
-    }
-    return results, nil
+		var result map[string]interface{}
+		if err := json.Unmarshal([]byte(line), &result); err != nil {
+			log.Printf("Error parsing JSON: %v", err)
+			log.Printf("Raw data: %s", line)
+			continue // Skip if parsing fails
+		}
+
+		// Check for the status
+		if status, ok := result["status"].(string); ok {
+			// Only add results with NXDOMAIN or SERVFAIL statuses
+			if status == "NXDOMAIN" || status == "SERVFAIL" {
+				results = append(results, result) // Add the result to the list if it matches
+			}
+		}
+	}
+	return results, nil
 }
 
 
@@ -261,7 +262,7 @@ func main() {
 	defer file.Close()
 
 	cacheFilePath := "/home/brainspiller/Documents/hunt/notified_subdomains.cache"
-	
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -299,104 +300,104 @@ func main() {
 		}
 
 		// Notify for each NXDOMAIN or SERVFAIL result
-for _, result := range results {
-    // Safely get the status
-    status, statusOk := result["status"].(string)
-    subdomain, subdomainOk := result["name"].(string)
+		for _, result := range results {
+			// Safely get the status
+			status, statusOk := result["status"].(string)
+			subdomain, subdomainOk := result["name"].(string)
 
-    if !statusOk || !subdomainOk {
-        log.Printf("Invalid result structure: %v", result)
-        continue
-    }
+			if !statusOk || !subdomainOk {
+				log.Printf("Invalid result structure: %v", result)
+				continue
+			}
 
-	// Skip notification if the subdomain has already been notified for this program
-	if isSubdomainNotified(subdomain, program, cacheFilePath) {
-		log.Printf("Subdomain %s already notified for program [%s]. Skipping.", subdomain, program)
-		continue
-	}
+			// Skip notification if the subdomain has already been notified for this program
+			if isSubdomainNotified(subdomain, program, cacheFilePath) {
+				log.Printf("Subdomain %s already notified for program [%s]. Skipping.", subdomain, program)
+				continue
+			}
 
-    if status == "NXDOMAIN" {
-        // Extracting the data field safely
-        dataField, dataOk := result["data"].(map[string]interface{})
-        if !dataOk {
-            log.Printf("Missing data field in result: %v", result)
-            continue
-        }
+			if status == "NXDOMAIN" {
+				// Extracting the data field safely
+				dataField, dataOk := result["data"].(map[string]interface{})
+				if !dataOk {
+					log.Printf("Missing data field in result: %v", result)
+					continue
+				}
 
-        answers, answersOk := dataField["answers"].([]interface{})
-        var cname string
-        if answersOk && len(answers) > 0 {
-            if firstAnswer, ok := answers[0].(map[string]interface{}); ok {
-                cname = firstAnswer["data"].(string) // Adjusted for correct structure
-            } else {
-                log.Printf("Expected map structure for answer: %v", answers[0])
-                continue
-            }
-        } else {
-            log.Printf("No answers found for NXDOMAIN: %s", subdomain)
-            continue
-        }
+				answers, answersOk := dataField["answers"].([]interface{})
+				var cname string
+				if answersOk && len(answers) > 0 {
+					if firstAnswer, ok := answers[0].(map[string]interface{}); ok {
+						cname = firstAnswer["data"].(string) // Adjusted for correct structure
+					} else {
+						log.Printf("Expected map structure for answer: %v", answers[0])
+						continue
+					}
+				} else {
+					log.Printf("No answers found for NXDOMAIN: %s", subdomain)
+					continue
+				}
 
-        // Check if CNAME is in the vulnerable services
-        vulnerable := false
-        for service := range vulnerableServices {
-            if strings.Contains(cname, service) {
-                vulnerable = true
-                break
-            }
-        }
-        if vulnerable {
-            message := fmt.Sprintf("**New Dangling Record**: %s with code: **%s** and records:**[%s]**", subdomain, status, cname)
-            if err := sendDiscordNotification(potentialTakeoverWebhook, message); err != nil {
-                log.Printf("Failed to send Discord notification: %v", err)
-            }
-        }
-		// Add to cache after sending notification
-		if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
-			log.Printf("Failed to add to cache: %v", err)
+				// Check if CNAME is in the vulnerable services
+				vulnerable := false
+				for service := range vulnerableServices {
+					if strings.Contains(cname, service) {
+						vulnerable = true
+						break
+					}
+				}
+				if vulnerable {
+					message := fmt.Sprintf("**New Dangling Record**: %s with code: **%s** and records:**[%s]**", subdomain, status, cname)
+					if err := sendDiscordNotification(potentialTakeoverWebhook, message); err != nil {
+						log.Printf("Failed to send Discord notification: %v", err)
+					}
+				}
+				// Add to cache after sending notification
+				if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
+					log.Printf("Failed to add to cache: %v", err)
+				}
+
+			} else if status == "SERVFAIL" {
+				// Get nameservers safely
+				nameservers, nsOk := result["ns"].([]interface{})
+				if !nsOk {
+					log.Printf("No nameservers found for SERVFAIL: %s", subdomain)
+					continue
+				}
+
+				// Check if any nameservers are in the vulnerable nameservers
+				for _, ns := range nameservers {
+					for _, vulnerableNS := range vulnerableNameservers {
+						match, _ := regexp.MatchString(vulnerableNS, ns.(string))
+						if match {
+							message := fmt.Sprintf("**New NS Server match**: %s with code: **%s** and nameservers:\n%v", subdomain, status, nameservers)
+							if err := sendDiscordNotification(potentialTakeoverWebhook, message); err != nil {
+								log.Printf("Failed to send Discord notification: %v", err)
+							}
+							// Add to cache after sending notification
+							if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
+								log.Printf("Failed to add to cache: %v", err)
+							}
+							break
+						}
+					}
+				}
+			}
 		}
 
-    } else if status == "SERVFAIL" {
-        // Get nameservers safely
-        nameservers, nsOk := result["ns"].([]interface{})
-        if !nsOk {
-            log.Printf("No nameservers found for SERVFAIL: %s", subdomain)
-            continue
-        }
+		// Handle any scanner errors
+		if err := scanner.Err(); err != nil {
+			log.Fatalf("Failed to read domains_sub.txt: %v", err)
 
-        // Check if any nameservers are in the vulnerable nameservers
-        for _, ns := range nameservers {
-            for _, vulnerableNS := range vulnerableNameservers {
-                match, _ := regexp.MatchString(vulnerableNS, ns.(string))
-                if match {
-                    message := fmt.Sprintf("**New NS Server match**: %s with code: **%s** and nameservers:\n%v", subdomain, status, nameservers)
-                    if err := sendDiscordNotification(potentialTakeoverWebhook, message); err != nil {
-                        log.Printf("Failed to send Discord notification: %v", err)
-                    }
-					// Add to cache after sending notification
-					if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
-						log.Printf("Failed to add to cache: %v", err)
-					}
-                    break
-                }
-            }
-        }
-    }
-}
+		}
 
-// Handle any scanner errors
-	if err := scanner.Err(); err != nil {
-		log.Fatalf("Failed to read domains_sub.txt: %v", err)
+		// Send a completion message to Discord
+		//completionMessage := "MassDNS Processing completed."
+		//if err := sendDiscordNotification(scanCompletionWebhook, completionMessage); err != nil {
+		//	log.Printf("Failed to send completion notification: %v", err)
 
-	}
+		//}
 
-	// Send a completion message to Discord
-	//completionMessage := "MassDNS Processing completed."
-	//if err := sendDiscordNotification(scanCompletionWebhook, completionMessage); err != nil {
-	//	log.Printf("Failed to send completion notification: %v", err)
-
-	//}
-
-	fmt.Println("MassDNS Processing completed.")
+		fmt.Println("MassDNS Processing completed.")
 	}
 }
