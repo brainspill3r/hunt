@@ -158,55 +158,51 @@ func sendDiscordNotification(webhookURL, message string) error {
 
 // Check if the subdomain for the given program is already in the cache
 func isSubdomainNotified(subdomain, program, cacheFilePath string) bool {
-	// Open the cache file
-	file, err := os.Open(cacheFilePath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			// If the file doesn't exist, it's fine; no notifications have been sent
-			return false
-		}
-		fmt.Printf("Error opening cache file: %v\n", err)
-		return false
-	}
-	defer file.Close()
+    file, err := os.Open(cacheFilePath)
+    if err != nil {
+        if os.IsNotExist(err) {
+            return false // Cache file does not exist; no notifications have been sent
+        }
+        fmt.Printf("Error opening cache file: %v\n", err)
+        return false
+    }
+    defer file.Close()
 
-	// Scan through each line in the cache file
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		line := scanner.Text()
+    scanner := bufio.NewScanner(file)
+    for scanner.Scan() {
+        line := scanner.Text()
 
-		// Check if the line matches the format [Program] Subdomain - [Date and Time]
-		if line == fmt.Sprintf("[%s] %s - %s", program, subdomain, time.Now().Format("2006-01-02 15:04:05")) {
-			return true // Subdomain and program are already notified
-		}
-	}
+        // Check if the line contains the program and subdomain
+        if strings.Contains(line, fmt.Sprintf("[%s] %s", program, subdomain)) {
+            return true // Subdomain and program are already notified
+        }
+    }
 
-	// Check for any errors while scanning the file
-	if err := scanner.Err(); err != nil {
-		fmt.Printf("Error reading cache file: %v\n", err)
-	}
+    if err := scanner.Err(); err != nil {
+        fmt.Printf("Error reading cache file: %v\n", err)
+    }
 
-	return false
+    return false
 }
+
 
 // Add the subdomain and program to the cache file after sending the notification
 func addSubdomainToCache(subdomain, program, cacheFilePath string) error {
-	// Open the cache file in append mode
-	file, err := os.OpenFile(cacheFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return fmt.Errorf("error opening cache file for writing: %v", err)
-	}
-	defer file.Close()
+    file, err := os.OpenFile(cacheFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    if err != nil {
+        return fmt.Errorf("error opening cache file for writing: %v", err)
+    }
+    defer file.Close()
 
-	// Add the new entry (program, subdomain, and timestamp) to the cache
-	cacheEntry := fmt.Sprintf("[%s] %s - %s\n", program, subdomain, time.Now().Format("2006-01-02 15:04:05"))
-	fmt.Printf("Adding to cache: %s\n", cacheEntry)
-	if _, err := file.WriteString(cacheEntry); err != nil {
-		return fmt.Errorf("error writing to cache file: %v", err)
-	}
+    cacheEntry := fmt.Sprintf("[%s] %s - %s\n", program, subdomain, time.Now().Format("2006-01-02 15:04:05"))
+    fmt.Printf("Adding to cache: %s\n", cacheEntry)
+    if _, err := file.WriteString(cacheEntry); err != nil {
+        return fmt.Errorf("error writing to cache file: %v", err)
+    }
 
-	return nil
+    return nil
 }
+
 
 
 // Run MassDNS on a given domain
@@ -356,9 +352,9 @@ for _, result := range results {
             }
         }
 		// Add to cache after sending notification
-		//if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
-		//	log.Printf("Failed to add to cache: %v", err)
-		//}
+		if err := addSubdomainToCache(subdomain, program, cacheFilePath); err != nil {
+			log.Printf("Failed to add to cache: %v", err)
+		}
 
     } else if status == "SERVFAIL" {
         // Get nameservers safely
