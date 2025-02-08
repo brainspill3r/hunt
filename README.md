@@ -78,4 +78,7 @@ This is achieved via their respective APIs and updated into the database. The re
 
 - At the time of writing this my system pulls from an updated list each morning from around 8000 root domains.
 
-Future plans; 
+📋Future plans; 
+🐋Start looking at K8's and making this a containered tool
+🚛Add queues and make the results from massdns.go > into the database.
+🚪Spend some more time on the Open-Redirect and XSS tools. 
