@@ -62,8 +62,8 @@ This project utilizes multiple **Vultr VPS instances** to distribute scanning ef
 
 - A **PostgreSQL database** is used to store collected scan results and information.(only for the ad-hoc subdomain-exploting.go tool)
 - Multiple **Vultr VPS instances** are set up, each responsible for scanning different targets.
-- A **primary VPS** acts as the central repository, **rsyncing** data from all scanning VPS instances every night. This helps consolidate data without performing scans from a single IP address, which could lead to bans or rate limits.
-- The setup was designed to be **cost-effective**, maintaining continuous scanning for around **$100/month**.
+- A **primary VPS** acts as the central repository then **rsync** is used to copy all the data from the main VPS instance every night, to all other available VPS's. The idea being that you can have three running or ten, the choice is yours. This helps consolidate data without performing scans from a single IP address, which could lead to IP ban. 
+- The whole setup was designed to be **cost-effective**, maintaining continuous scanning for around **$100/month** but with a sudo version of IP rotation.
 
 ### 🔄 Automated Data Collection  
 
@@ -74,5 +74,8 @@ Each night, the system fetches target data from multiple sources, including:
 - **Intigriti**
 - **YesWeHack**
 
-This is achieved via their respective APIs and updated into the database. The relevant domains are pulled and stored in a file like so:
+This is achieved via their respective APIs and updated into the database. The relevant domains are pulled and stored in a file. 
 
+- At the time of writing this my system pulls from an updated list each morning from around 8000 root domains.
+
+Future plans; 
