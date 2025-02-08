@@ -3,6 +3,7 @@
 **Go Microservices For Bug Bounty**
 
 Welcome to **Hunt**! This project is a collection of Go microservices designed to assist in bug bounty hunting by automating various security assessments. Once findings meet a certain criteria, I get notified by webhooks in my Discord server. 
+The setup was designed to be **cost-effective**, maintaining continuous scanning for around **$100/month**.
 
 **Potential Takeovers**
 ![image](https://github.com/user-attachments/assets/d6acb0a8-bd2b-4ed5-a4d5-ca2caac7bd10)
@@ -43,7 +44,7 @@ The repository is organized into the following directories and scripts:
 - **URLCollection/**: Collects URLs for further analysis.
 - **XSSDetection/**: Detects Cross-Site Scripting vulnerabilities.
 
-Additionally, the repository includes various `run_*.sh` scripts to execute the corresponding services via cronjobs. These times can be changed in order to preserve IP's and also manually manage the cost quickly. 
+Additionally, the repository includes various `run_*.sh` scripts to execute the corresponding services via cronjobs (On your VPS's). The times can be changed in order to preserve IP's and also manually manage the cost quickly. 
 
 ## ⚠️ Important: Update Paths  
 
@@ -52,7 +53,7 @@ The scripts and configurations may contain hardcoded paths that need to be adjus
 
 ## 🌍 Infrastructure Setup
 
-This project utilizes multiple **Vultr VPS instances** to distribute scanning efforts and avoid detection from using a single IP address. 
+This project utilizes multiple **Vultr VPS instances** to distribute scanning efforts and avoid detection from using a single IP address. You will also need to setup your own .env files with Webhooks accordingly.
 
 ### 💾 Data Synchronization  
 
