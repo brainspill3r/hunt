@@ -2,7 +2,21 @@
 
 **Go Microservices For Bug Bounty**
 
-Welcome to **Hunt**! This project is a collection of Go microservices designed to assist in bug bounty hunting by automating various security assessments.
+Welcome to **Hunt**! This project is a collection of Go microservices designed to assist in bug bounty hunting by automating various security assessments. Once findings meet a certain criteria, I get notified by webhooks in my Discord server. 
+
+Potential Takeovers
+![image](https://github.com/user-attachments/assets/513e7616-818a-4120-8d78-7709b575a8ef)
+Subdomain Enumeration
+![image](https://github.com/user-attachments/assets/47d6d9d0-8f15-4c89-b845-4a449d7d2fc2)
+Nuclei Scans
+![image](https://github.com/user-attachments/assets/03aea1bf-4003-41e5-a035-dcf3710d5466)
+LFI Scans
+![image](https://github.com/user-attachments/assets/c6d8e972-7029-4643-a098-5841f69663d9)
+Open Re-directs
+![image](https://github.com/user-attachments/assets/8ad65502-f137-47ec-9857-584f44c6fef0)
+XSS Scans
+![image](https://github.com/user-attachments/assets/52a18443-c1af-4365-b7da-73c676eb2333)
+
 
 ## 📂 Project Structure
 
