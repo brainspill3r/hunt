@@ -55,6 +55,9 @@ The scripts and configurations may contain hardcoded paths that need to be adjus
 
 This project utilizes multiple **Vultr VPS instances** to distribute scanning efforts and avoid detection from using a single IP address. You will also need to setup your own .env files with Webhooks accordingly.
 
+![image](https://github.com/user-attachments/assets/20fa4f39-07d9-4764-8e6e-8ea949188b69)
+
+
 ### 💾 Data Synchronization  
 
 - A **PostgreSQL database** is used to store collected scan results and information.(only for the ad-hoc subdomain-exploting.go tool)
