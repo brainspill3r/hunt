@@ -35,12 +35,12 @@ The setup was designed to be **cost-effective**, maintaining continuous scanning
 The repository is organized into the following directories and scripts:
 
 - **LFIDetection/**: Detects Local File Inclusion vulnerabilities.
-- **MassDNS/**: Performs mass DNS resolution to discover subdomains.
+- **MassDNS/**: Performs mass DNS resolution to discover subdomains. (automated scanner)
 - **NucleiVulnerabilityScanning/**: Utilizes Nuclei for vulnerability scanning.
 - **OpenRedirectCheck/**: Checks for open redirect vulnerabilities.
 - **ParameterJSExtraction/**: Extracts parameters from JavaScript files.
 - **PortScanning/**: Conducts port scanning to identify open ports.
-- **SubdomainExploiting/**: Exploits discovered subdomains.
+- **SubdomainExploiting/**: Exploits discovered subdomains. (ad-hoc manual scanner - connects to database)
 - **URLCollection/**: Collects URLs for further analysis.
 - **XSSDetection/**: Detects Cross-Site Scripting vulnerabilities.
 
@@ -57,7 +57,7 @@ This project utilizes multiple **Vultr VPS instances** to distribute scanning ef
 
 ### 💾 Data Synchronization  
 
-- A **PostgreSQL database** is used to store collected scan results and information.
+- A **PostgreSQL database** is used to store collected scan results and information.(only for the ad-hoc subdomain-exploting.go tool)
 - Multiple **Vultr VPS instances** are set up, each responsible for scanning different targets.
 - A **primary VPS** acts as the central repository, **rsyncing** data from all scanning VPS instances every night. This helps consolidate data without performing scans from a single IP address, which could lead to bans or rate limits.
 - The setup was designed to be **cost-effective**, maintaining continuous scanning for around **$100/month**.
